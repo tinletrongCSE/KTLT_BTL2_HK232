@@ -16,154 +16,183 @@ int GetDistance(Position pos1, Position pos2)
     return dis;
 }
 
-// 3.3 Vị trí - Position
+/**
+ * CLASS POSITION
+ */
 Position::Position(const string &str_pos)
 {
-    stringstream ss(str_pos); // Turn the string into a stream.
+    stringstream ss(str_pos); // Chuyển chuỗi thành luồng.
+
     string item;
 
-    getline(ss, item, '('); // remove '('
+    getline(ss, item, '('); // Loại bỏ ký tự '('
 
-    getline(ss, item, ','); // get r
-    this->r = stoi(item);
-    getline(ss, item, ')'); // get c
-    this->c = stoi(item);
+    getline(ss, item, ','); // Lấy giá trị r (hàng)
+    this->r = stoi(item);   // Chuyển chuỗi thành số nguyên và gán cho r
+
+    getline(ss, item, ')'); // Lấy giá trị c (cột)
+    this->c = stoi(item);   // Chuyển chuỗi thành số nguyên và gán cho c
 }
 
-// 3.2 Bản đồ - Map
+/**
+ * CLASS MAP
+ */
 Map::Map(int in_num_rows, int in_num_cols, int in_num_walls, Position *in_array_walls, int in_num_fake_walls, Position *in_array_fake_walls)
 {
-    this->num_rows = in_num_rows;
-    this->num_cols = in_num_cols;
-    this->map = new MapElement **[in_num_rows];
-    for (int i = 0; i < in_num_rows; i++)
+    num_rows = in_num_rows;
+    num_cols = in_num_cols;
+
+    // Khởi tạo bản đồ với tất cả các ô đều là PATH
+    map = new MapElement **[num_rows];
+    for (int i = 0; i < num_rows; i++)
     {
-        this->map[i] = new MapElement *[in_num_cols];
-        for (int j = 0; j < in_num_cols; j++)
+        map[i] = new MapElement *[num_cols];
+        for (int j = 0; j < num_cols; j++)
         {
-            this->map[i][j] = new Path();
+            map[i][j] = new Path();
         }
     }
 
+    // Thay thế các ô WALL
     for (int i = 0; i < in_num_walls; i++)
     {
         int row = in_array_walls[i].getRow();
         int col = in_array_walls[i].getCol();
-        delete this->map[row][col];
-        this->map[row][col] = new Wall();
+        delete map[row][col];
+        map[row][col] = new Wall();
     }
 
+    // Thay thế các ô FAKE_WALL
     for (int i = 0; i < in_num_fake_walls; i++)
     {
         int r = in_array_fake_walls[i].getRow();
         int c = in_array_fake_walls[i].getCol();
         int in_req_exp = (r * 257 + c * 139 + 89) % 900 + 1;
-        delete this->map[r][c];
-        this->map[r][c] = new FakeWall(in_req_exp);
+        delete map[r][c];
+        map[r][c] = new FakeWall(in_req_exp);
     }
 };
 
 Map::~Map()
 {
-    for (int i = 0; i < this->num_rows; i++)
+    // Duyệt qua từng hàng của bản đồ
+    for (int i = 0; i < num_rows; i++)
     {
-        for (int j = 0; j < this->num_cols; j++)
+        // Duyệt qua từng cột của hàng hiện tại
+        for (int j = 0; j < num_cols; j++)
         {
-            delete this->map[i][j];
+            // Xóa phần tử tại vị trí [i][j]
+            delete map[i][j];
         }
-        delete[] this->map[i];
+
+        // Xóa hàng thứ i
+        delete[] map[i];
     }
-    delete[] this->map;
+
+    // Xóa bản đồ
+    delete[] map;
 };
 
 bool Map::isValid(const Position &pos, MovingObject *mv_obj) const
 {
-    bool isTrue = true;
-    if (pos.getRow() < 0 || pos.getRow() >= this->num_rows || pos.getCol() < 0 || pos.getCol() >= this->num_cols)
+    int row = pos.getRow();
+    int col = pos.getCol();
+
+    // Kiểm tra xem vị trí có nằm ngoài bản đồ không
+    if (row < 0 || row >= num_rows || col < 0 || col >= num_cols)
     {
         return false;
     }
-    else if (this->map[pos.getRow()][pos.getCol()]->getType() == WALL)
+
+    MapElement *element = map[row][col];
+    ElementType type = element->getType();
+
+    // Kiểm tra xem vị trí có phải là tường không
+    if (type == WALL)
     {
         return false;
     }
-    else if (this->map[pos.getRow()][pos.getCol()]->getType() == FAKE_WALL)
+
+    // Kiểm tra xem vị trí có phải là tường giả và đối tượng di chuyển có đủ kinh nghiệm để vượt qua không
+    if (type == FAKE_WALL && mv_obj->getName() == "Watson")
     {
-        FakeWall *fakeWall = dynamic_cast<FakeWall *>(this->map[pos.getRow()][pos.getCol()]);
-        if (mv_obj->getName() == "Watson")
+        FakeWall *fakeWall = dynamic_cast<FakeWall *>(element);
+        Watson *watson = dynamic_cast<Watson *>(mv_obj);
+
+        if (fakeWall->getReqExp() >= watson->getExp())
         {
-            Watson *watson = dynamic_cast<Watson *>(mv_obj);
-            if (fakeWall->getReqExp() >= watson->getExp())
-            {
-                return false;
-            }
+            return false;
         }
     }
+
     return true;
 }
 
-// 3.4 Đối tượng di chuyển - MovingObject
-MovingObject::MovingObject(int index, const Position pos, Map *map, const string &name)
-{
-    this->index = index;
-    this->pos = pos;
-    this->map = map;
-    this->name = name;
-};
+/**
+ * CLASS MOVINGOBJECT
+ * CLASS CHARACTER
+ * CLASS SHERLOCK
+ * CLASS WATSON
+ * CLASS CRIMINAL
+ */
 
+// MOVINGOBJECT
 void MovingObject::move()
 {
-    Position next_pos = this->getNextPosition();
+    Position next_pos = getNextPosition();
+
+    // Kiểm tra xem vị trí tiếp theo có hợp lệ không
     if (!next_pos.isEqual(-1, -1))
     {
-        this->pos = next_pos;
+        pos = next_pos;
     }
-    this->numsteps_now++;
+
+    numsteps_now++;
 }
 
-// 3.5 Sherlock - Sherlock
+// SHERLOCK
 Position Sherlock::getNextPosition()
 {
-    int r = this->pos.getRow();
-    int c = this->pos.getCol();
-    int temp_step = numsteps_now % this->moving_rule.length();
+    int row = pos.getRow();
+    int col = pos.getCol();
+    int step = numsteps_now % moving_rule.length();
 
-    if (this->moving_rule[temp_step] == 'U')
+    char direction = moving_rule[step];
+
+    switch (direction)
     {
-        r--;
-    }
-    else if (this->moving_rule[temp_step] == 'D')
-    {
-        r++;
-    }
-    else if (this->moving_rule[temp_step] == 'L')
-    {
-        c--;
-    }
-    else if (this->moving_rule[temp_step] == 'R')
-    {
-        c++;
+    case 'U':
+        row--;
+        break;
+    case 'D':
+        row++;
+        break;
+    case 'L':
+        col--;
+        break;
+    case 'R':
+        col++;
+        break;
     }
 
-    Position next_pos;
+    Position next_pos(row, col);
 
-    if (this->map->isValid(Position(r, c), this))
-    {
-        next_pos.setRow(r);
-        next_pos.setCol(c);
-    }
-    else
+    if (!map->isValid(next_pos, this))
     {
         next_pos = Position::npos;
     }
+
     return next_pos;
 }
 
 void Sherlock::afterMove(ArrayMovingObject *arr_moving_objects, SherlockBag *sherlock_bag, WatsonBag *watson_bag)
 {
+    // Duyệt qua các đối tượng di chuyển
     for (int i = 0; i < arr_moving_objects->getMovingObjectCount(); i++)
     {
         MovingObject *mv_obj = arr_moving_objects->get(i);
+
+        // Nếu Watson cùng vị trí với Sherlock, trao đổi thẻ
         if (mv_obj->getName() == "Watson" && mv_obj->getCurrentPosition().isEqual(this->getCurrentPosition()))
         {
             BaseItem *temp_sherItem = sherlock_bag->get(PASSING_CARD);
@@ -180,6 +209,7 @@ void Sherlock::afterMove(ArrayMovingObject *arr_moving_objects, SherlockBag *she
             }
         }
 
+        // Nếu Robot cùng vị trí với Sherlock, xử lý tương tác
         Robot *robot = dynamic_cast<Robot *>(mv_obj);
         if (robot != NULL && robot->getCurrentPosition().isEqual(this->getCurrentPosition()))
         {
@@ -187,34 +217,22 @@ void Sherlock::afterMove(ArrayMovingObject *arr_moving_objects, SherlockBag *she
             switch (robot->getRobotType())
             {
             case C:
-            {
                 if (this->getExp() <= 500)
                     sherlock_bag->insert(item);
                 break;
-            }
             case S:
-            {
                 if (this->getExp() > 400)
-                {
                     sherlock_bag->insert(item);
-                }
                 else if (sherlock_bag->get(EXCEMPTION_CARD) == nullptr)
-                {
                     this->setExp(ceil(0.9 * this->getHp() - 0.0001));
-                }
                 break;
-            }
             case W:
-            {
                 sherlock_bag->insert(item);
                 break;
-            }
             case SW:
-            {
                 if (this->getExp() > 300 && this->getHp() > 335)
-                {
                     sherlock_bag->insert(item);
-                }
+
                 else if (sherlock_bag->get(EXCEMPTION_CARD) == nullptr)
                 {
                     this->setHp(ceil(0.85 * this->getHp() - 0.0001));
@@ -222,7 +240,8 @@ void Sherlock::afterMove(ArrayMovingObject *arr_moving_objects, SherlockBag *she
                 }
                 break;
             }
-            }
+
+            // Sử dụng vật phẩm từ túi của Sherlock sau khi tương tác
             BaseItem *temp_item = sherlock_bag->get();
             if (temp_item != nullptr)
             {
@@ -231,7 +250,8 @@ void Sherlock::afterMove(ArrayMovingObject *arr_moving_objects, SherlockBag *she
         }
     }
 }
-// 3.6 Watson - Watson
+
+// WATSON
 Position Watson::getNextPosition()
 {
     int r = this->pos.getRow();
@@ -269,85 +289,23 @@ Position Watson::getNextPosition()
     return next_pos;
 }
 
-// 3.7 Criminal - Criminal
-Position Criminal::getNextPosition()
-{
-    int dis_U = -1;
-    int dis_L = -1;
-    int dis_D = -1;
-    int dis_R = -1;
-
-    int r = this->pos.getRow();
-    int c = this->pos.getCol();
-
-    if (this->map->isValid(Position(r - 1, c), this))
-    {
-        int dis_sherlock = GetDistance(Position(r - 1, c), this->sherlock->getCurrentPosition());
-        int dis_watson = GetDistance(Position(r - 1, c), this->watson->getCurrentPosition());
-        dis_U = dis_sherlock + dis_watson;
-    }
-    if (this->map->isValid(Position(r, c - 1), this))
-    {
-        int dis_sherlock = GetDistance(Position(r, c - 1), this->sherlock->getCurrentPosition());
-        int dis_watson = GetDistance(Position(r, c - 1), this->watson->getCurrentPosition());
-        dis_L = dis_sherlock + dis_watson;
-    }
-    if (this->map->isValid(Position(r + 1, c), this))
-    {
-        int dis_sherlock = GetDistance(Position(r + 1, c), this->sherlock->getCurrentPosition());
-        int dis_watson = GetDistance(Position(r + 1, c), this->watson->getCurrentPosition());
-        dis_D = dis_sherlock + dis_watson;
-    }
-    if (this->map->isValid(Position(r, c + 1), this))
-    {
-        int dis_sherlock = GetDistance(Position(r, c + 1), this->sherlock->getCurrentPosition());
-        int dis_watson = GetDistance(Position(r, c + 1), this->watson->getCurrentPosition());
-        dis_R = dis_sherlock + dis_watson;
-    }
-
-    int max_dis = max(max(dis_U, dis_L), max(dis_D, dis_R));
-
-    if (max_dis == dis_U && dis_U != -1)
-    {
-        r--;
-    }
-    else if (max_dis == dis_L && dis_L != -1)
-    {
-        c--;
-    }
-    else if (max_dis == dis_D && dis_D != -1)
-    {
-        r++;
-    }
-    else if (max_dis == dis_R && dis_R != -1)
-    {
-        c++;
-    }
-    else
-    {
-        return Position::npos;
-    }
-
-    Position next_pos = Position(r, c);
-    return next_pos;
-}
-
 void Watson::afterMove(ArrayMovingObject *arr_moving_objects, SherlockBag *sherlock_bag, WatsonBag *watson_bag)
 {
+    // Duyệt qua các đối tượng di chuyển
     for (int i = 0; i < arr_moving_objects->getMovingObjectCount(); i++)
     {
         MovingObject *mv_obj = arr_moving_objects->get(i);
         Robot *robot = dynamic_cast<Robot *>(mv_obj);
+
+        // Nếu Robot cùng vị trí với Watson, xử lý tương tác
         if (robot != NULL && robot->getCurrentPosition().isEqual(this->getCurrentPosition()))
         {
             BaseItem *item = robot->getItem();
             switch (robot->getRobotType())
             {
             case C:
-            {
                 watson_bag->insert(item);
                 break;
-            }
             case S:
                 break;
             case W:
@@ -388,6 +346,8 @@ void Watson::afterMove(ArrayMovingObject *arr_moving_objects, SherlockBag *sherl
                 break;
             }
             }
+
+            // Sử dụng vật phẩm từ túi của Watson
             BaseItem *temp_item = watson_bag->get();
             if (temp_item != nullptr)
             {
@@ -397,98 +357,128 @@ void Watson::afterMove(ArrayMovingObject *arr_moving_objects, SherlockBag *sherl
     }
 }
 
+// CRIMINAL
+Position Criminal::getNextPosition()
+{
+    int r = this->pos.getRow();
+    int c = this->pos.getCol();
+
+    // Tạo một mảng chứa các hướng di chuyển có thể và khoảng cách tương ứng
+    Position directions[4];
+    int distances[4] = {-1, -1, -1, -1};
+
+    // Kiểm tra các hướng di chuyển và thêm vào mảng nếu hợp lệ
+    Position newPos[4] = {Position(r - 1, c), Position(r, c - 1), Position(r + 1, c), Position(r, c + 1)};
+    for (int i = 0; i < 4; i++)
+    {
+        if (this->map->isValid(newPos[i], this))
+        {
+            int dis_sherlock = GetDistance(newPos[i], this->sherlock->getCurrentPosition());
+            int dis_watson = GetDistance(newPos[i], this->watson->getCurrentPosition());
+            directions[i] = newPos[i];
+            distances[i] = dis_sherlock + dis_watson;
+        }
+    }
+
+    // Tìm hướng có khoảng cách lớn nhất
+    int max_distance = -1;
+    Position next_pos = Position::npos;
+    for (int i = 0; i < 4; i++)
+    {
+        if (distances[i] > max_distance)
+        {
+            max_distance = distances[i];
+            next_pos = directions[i];
+        }
+    }
+
+    return next_pos;
+}
+
 void Criminal::createRobot(ArrayMovingObject *arr_moving_objects)
 {
-    if (!arr_moving_objects->isFull())
+    if (!arr_moving_objects->isFull() && this->num_steps % 3 == 0)
     {
         int dis_sherlock = GetDistance(this->prev_pos, this->sherlock->getCurrentPosition());
         int dis_watson = GetDistance(this->prev_pos, this->watson->getCurrentPosition());
 
+        Robot *robot = nullptr;
         if (this->num_steps == 3)
         {
-            RobotC *robotC = new RobotC(arr_moving_objects->getMovingObjectCount(), this->prev_pos, this->map, this);
-            arr_moving_objects->add(robotC);
+            robot = new RobotC(arr_moving_objects->getMovingObjectCount(), this->prev_pos, this->map, this);
         }
-        else if (dis_sherlock < dis_watson && this->num_steps % 3 == 0)
+        else if (dis_sherlock < dis_watson)
         {
-            RobotS *robotS = new RobotS(arr_moving_objects->getMovingObjectCount(), this->prev_pos, this->map, this, this->sherlock);
-            arr_moving_objects->add(robotS);
+            robot = new RobotS(arr_moving_objects->getMovingObjectCount(), this->prev_pos, this->map, this, this->sherlock);
         }
-        else if (dis_sherlock > dis_watson && this->num_steps % 3 == 0)
+        else if (dis_sherlock > dis_watson)
         {
-            RobotW *robotW = new RobotW(arr_moving_objects->getMovingObjectCount(), this->prev_pos, this->map, this, this->watson);
-            arr_moving_objects->add(robotW);
+            robot = new RobotW(arr_moving_objects->getMovingObjectCount(), this->prev_pos, this->map, this, this->watson);
         }
-        else if (this->num_steps % 3 == 0)
+        else
         {
-            RobotSW *robotSW = new RobotSW(arr_moving_objects->getMovingObjectCount(), this->prev_pos, this->map, this, this->sherlock, this->watson);
-            arr_moving_objects->add(robotSW);
+            robot = new RobotSW(arr_moving_objects->getMovingObjectCount(), this->prev_pos, this->map, this, this->sherlock, this->watson);
+        }
+
+        if (robot != nullptr)
+        {
+            arr_moving_objects->add(robot);
         }
     }
 }
 
 void Criminal::move()
 {
-    Position next_pos = this->getNextPosition();
-    if (!next_pos.isEqual(-1, -1))
+    Position nextPosition = getNextPosition();
+    if (!nextPosition.isEqual(Position::npos))
     {
-        this->num_steps++;
-        this->prev_pos = this->pos;
-        this->pos = next_pos;
+        num_steps++;
+        prev_pos = pos;
+        pos = nextPosition;
     }
 }
 
-// 3.8 Mảng các đối tượng di chuyển - ArayMovingObject
-ArrayMovingObject::ArrayMovingObject(int capacity)
-{
-    this->capacity = capacity;
-    this->count = 0;
-    this->arr_mv_objs = new MovingObject *[capacity];
-    for (int i = 0; i < capacity; i++)
-    {
-        this->arr_mv_objs[i] = NULL;
-    }
-}
-
-ArrayMovingObject::~ArrayMovingObject()
-{
-    if (this->arr_mv_objs != NULL)
-        delete[] this->arr_mv_objs;
-}
-
+/**
+ * CLASS ARRAYMOVINGOBJECT
+ */
 bool ArrayMovingObject::add(MovingObject *mv_obj)
 {
-    if (this->isFull())
+    if (isFull())
     {
         return false;
     }
-    else
-    {
-        this->arr_mv_objs[mv_obj->getIndex()] = mv_obj;
-        this->count++;
-        return true;
-    }
+
+    arr_mv_objs[mv_obj->getIndex()] = mv_obj;
+    count++;
+    return true;
 }
 
 string ArrayMovingObject::str() const
 {
-    string str = "ArrayMovingObject[count=" + to_string(this->count) + ";capacity=" + to_string(this->capacity);
-    for (int i = 0; i < this->capacity; i++)
+    stringstream ss;
+    ss << "ArrayMovingObject[count=" << count
+       << ";capacity=" << capacity;
+
+    for (int i = 0; i < capacity; i++)
     {
-        if (this->arr_mv_objs[i] == NULL)
-            continue;
-        str += ";" + this->arr_mv_objs[i]->str();
+        if (arr_mv_objs[i])
+        {
+            ss << ";" << arr_mv_objs[i]->str();
+        }
     }
-    str += "]";
-    return str;
+
+    ss << "]";
+    return ss.str();
 }
 
-// 3.9 Cấu hình cho chương trình - Configuration
+/**
+ * CLASS CONFIGURATION
+ */
 Configuration::Configuration(const string &filepath)
 {
     ifstream file(filepath);
     string line;
-    // cout << "File path: " << filepath << endl;
+
     while (getline(file, line))
     {
         size_t found = line.find("=");
@@ -496,115 +486,85 @@ Configuration::Configuration(const string &filepath)
         if (found != string::npos)
         {
             string key = line.substr(0, found);
+            string attribute_value = line.substr(found + 1);
 
             if (key == "MAP_NUM_ROWS")
             {
-                string attribute_value = line.substr(found + 1);
-                this->map_num_rows = stoi(attribute_value);
+                map_num_rows = stoi(attribute_value);
             }
             else if (key == "MAP_NUM_COLS")
             {
-                string attribute_value = line.substr(found + 1);
-                this->map_num_cols = stoi(attribute_value);
+                map_num_cols = stoi(attribute_value);
             }
             else if (key == "MAX_NUM_MOVING_OBJECTS")
             {
-                string attribute_value = line.substr(found + 1);
-                this->max_num_moving_objects = stoi(attribute_value);
+                max_num_moving_objects = stoi(attribute_value);
             }
-            else if (key == "ARRAY_WALLS")
+            else if (key == "ARRAY_WALLS" || key == "ARRAY_FAKE_WALLS")
             {
-                this->num_walls = 0;
-                string attribute_value = line.substr(found + 1);
+                Position **arr = (key == "ARRAY_WALLS") ? &arr_walls : &arr_fake_walls;
+                int *num = (key == "ARRAY_WALLS") ? &num_walls : &num_fake_walls;
+
+                *num = 0;
                 for (char c : attribute_value)
                 {
                     if (c == ';')
                     {
-                        ++this->num_walls;
+                        ++(*num);
                     }
                 }
-                ++this->num_walls;
-                this->arr_walls = new Position[this->num_walls];
+                ++(*num);
+
+                *arr = new Position[*num];
+
                 stringstream ss(attribute_value);
                 string item;
 
-                for (int i = 0; i < this->num_walls; i++)
+                for (int i = 0; i < *num; i++)
                 {
                     getline(ss, item, ';');
-                    this->arr_walls[i] = Position(item);
-                }
-            }
-            else if (key == "ARRAY_FAKE_WALLS")
-            {
-                this->num_fake_walls = 0;
-                string attribute_value = line.substr(found + 1);
-                for (char c : attribute_value)
-                {
-                    if (c == ';')
-                    {
-                        ++this->num_fake_walls;
-                    }
-                }
-                ++this->num_fake_walls;
-                this->arr_fake_walls = new Position[this->num_fake_walls];
-                stringstream ss(attribute_value);
-                string item;
-
-                for (int i = 0; i < this->num_fake_walls; i++)
-                {
-                    getline(ss, item, ';');
-                    this->arr_fake_walls[i] = Position(item);
+                    (*arr)[i] = Position(item);
                 }
             }
             else if (key == "SHERLOCK_MOVING_RULE")
             {
-                string attribute_value = line.substr(found + 1);
-                this->sherlock_moving_rule = attribute_value;
+                sherlock_moving_rule = attribute_value;
             }
             else if (key == "SHERLOCK_INIT_POS")
             {
-                string attribute_value = line.substr(found + 1);
-                this->sherlock_init_pos = Position(attribute_value);
+                sherlock_init_pos = Position(attribute_value);
             }
             else if (key == "SHERLOCK_INIT_HP")
             {
-                string attribute_value = line.substr(found + 1);
-                this->sherlock_init_hp = stoi(attribute_value);
+                sherlock_init_hp = stoi(attribute_value);
             }
             else if (key == "SHERLOCK_INIT_EXP")
             {
-                string attribute_value = line.substr(found + 1);
-                this->sherlock_init_exp = stoi(attribute_value);
+                sherlock_init_exp = stoi(attribute_value);
             }
             else if (key == "WATSON_MOVING_RULE")
             {
-                string attribute_value = line.substr(found + 1);
-                this->watson_moving_rule = attribute_value;
+                watson_moving_rule = attribute_value;
             }
             else if (key == "WATSON_INIT_POS")
             {
-                string attribute_value = line.substr(found + 1);
-                this->watson_init_pos = Position(attribute_value);
+                watson_init_pos = Position(attribute_value);
             }
             else if (key == "WATSON_INIT_HP")
             {
-                string attribute_value = line.substr(found + 1);
-                this->watson_init_hp = stoi(attribute_value);
+                watson_init_hp = stoi(attribute_value);
             }
             else if (key == "WATSON_INIT_EXP")
             {
-                string attribute_value = line.substr(found + 1);
-                this->watson_init_exp = stoi(attribute_value);
+                watson_init_exp = stoi(attribute_value);
             }
             else if (key == "CRIMINAL_INIT_POS")
             {
-                string attribute_value = line.substr(found + 1);
-                this->criminal_init_pos = Position(attribute_value);
+                criminal_init_pos = Position(attribute_value);
             }
             else if (key == "NUM_STEPS")
             {
-                string attribute_value = line.substr(found + 1);
-                this->num_steps = stoi(attribute_value);
+                num_steps = stoi(attribute_value);
             }
         }
     }

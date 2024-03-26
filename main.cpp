@@ -620,20 +620,20 @@ void printResult(string input_folder)
             TestStudyInPink::check_07(input_file, output_file);
         }
 
-        // if (!compareFiles(output_file, expect_file))
-        // {
-        //     clearScreen();
-        //     std::cout << "Test case " << i << " failed" << endl;
-        //     std::cout << "Input file: " << input_file << endl;
-        //     std::cout << "-------------------------------" << endl;
-        //     std::cout << "Your output: " << output_file << endl;
-        //     std::cout << "-------------------------------" << endl;
-        //     std::cout << "Expected output: " << expect_file << endl;
-        //     std::cout << "-------------------------------" << endl;
-        //     std::cout << "Structure of input file: " << endl;
-        //     printFile("testcase/" + input_folder + "/readme.txt");
-        //     break;
-        // }
+        if (!compareFiles(output_file, expect_file))
+        {
+            clearScreen();
+            std::cout << "Test case " << i << " failed" << endl;
+            std::cout << "Input file: " << input_file << endl;
+            std::cout << "-------------------------------" << endl;
+            std::cout << "Your output: " << output_file << endl;
+            std::cout << "-------------------------------" << endl;
+            std::cout << "Expected output: " << expect_file << endl;
+            std::cout << "-------------------------------" << endl;
+            std::cout << "Structure of input file: " << endl;
+            printFile("testcase/" + input_folder + "/readme.txt");
+            break;
+        }
         if (i == 499)
         {
             clearScreen();
