@@ -1,0 +1,46 @@
+Sherlock[index=1;pos=(5,12);moving_rule=DDRDDRRR]
+STEP1: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(6,12);moving_rule=DDRDDRRR]]
+STEP2: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(7,12);moving_rule=DDRDDRRR]]
+STEP3: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(7,13);moving_rule=DDRDDRRR]]
+STEP4: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(8,13);moving_rule=DDRDDRRR]]
+STEP5: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(9,13);moving_rule=DDRDDRRR]]
+STEP6: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(9,14);moving_rule=DDRDDRRR]]
+STEP7: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(9,15);moving_rule=DDRDDRRR]]
+STEP8: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(9,16);moving_rule=DDRDDRRR]]
+STEP9: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(10,16);moving_rule=DDRDDRRR]]
+STEP10: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(11,16);moving_rule=DDRDDRRR]]
+STEP11: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(11,17);moving_rule=DDRDDRRR]]
+STEP12: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(12,17);moving_rule=DDRDDRRR]]
+STEP13: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(13,17);moving_rule=DDRDDRRR]]
+STEP14: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(13,18);moving_rule=DDRDDRRR]]
+STEP15: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(13,19);moving_rule=DDRDDRRR]]
+STEP16: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(13,19);moving_rule=DDRDDRRR]]
+STEP17: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(14,19);moving_rule=DDRDDRRR]]
+STEP18: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(15,19);moving_rule=DDRDDRRR]]
+STEP19: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(15,19);moving_rule=DDRDDRRR]]
+STEP20: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(16,19);moving_rule=DDRDDRRR]]
+STEP21: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(17,19);moving_rule=DDRDDRRR]]
+STEP22: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(17,19);moving_rule=DDRDDRRR]]
+End.

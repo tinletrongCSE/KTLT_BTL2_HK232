@@ -1,0 +1,42 @@
+Sherlock[index=1;pos=(20,5);moving_rule=LR]
+Watson[index=2;pos=(24,4);moving_rule=DRLLLL]
+Criminal[index=0;pos=(1,0)]
+STEP1: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,0)];Sherlock[index=1;pos=(20,4);moving_rule=LR];Watson[index=2;pos=(24,4);moving_rule=DRLLLL]]
+STEP2: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(1,0)];Sherlock[index=1;pos=(20,5);moving_rule=LR];Watson[index=2;pos=(24,5);moving_rule=DRLLLL]]
+STEP3: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,0)];Sherlock[index=1;pos=(20,4);moving_rule=LR];Watson[index=2;pos=(24,4);moving_rule=DRLLLL]]
+STEP4: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(1,0)];Sherlock[index=1;pos=(20,5);moving_rule=LR];Watson[index=2;pos=(24,3);moving_rule=DRLLLL]]
+STEP5: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,0)];Sherlock[index=1;pos=(20,4);moving_rule=LR];Watson[index=2;pos=(24,2);moving_rule=DRLLLL]]
+STEP6: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(1,0)];Sherlock[index=1;pos=(20,5);moving_rule=LR];Watson[index=2;pos=(24,1);moving_rule=DRLLLL]]
+STEP7: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,0)];Sherlock[index=1;pos=(20,4);moving_rule=LR];Watson[index=2;pos=(25,1);moving_rule=DRLLLL]]
+STEP8: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(1,0)];Sherlock[index=1;pos=(20,5);moving_rule=LR];Watson[index=2;pos=(25,2);moving_rule=DRLLLL]]
+STEP9: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,0)];Sherlock[index=1;pos=(20,4);moving_rule=LR];Watson[index=2;pos=(25,1);moving_rule=DRLLLL]]
+STEP10: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,1)];Sherlock[index=1;pos=(20,5);moving_rule=LR];Watson[index=2;pos=(25,0);moving_rule=DRLLLL]]
+STEP11: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,0)];Sherlock[index=1;pos=(20,4);moving_rule=LR];Watson[index=2;pos=(25,0);moving_rule=DRLLLL]]
+STEP12: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,1)];Sherlock[index=1;pos=(20,5);moving_rule=LR];Watson[index=2;pos=(25,0);moving_rule=DRLLLL]]
+STEP13: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,0)];Sherlock[index=1;pos=(20,4);moving_rule=LR];Watson[index=2;pos=(25,0);moving_rule=DRLLLL]]
+STEP14: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(1,0)];Sherlock[index=1;pos=(20,5);moving_rule=LR];Watson[index=2;pos=(25,1);moving_rule=DRLLLL]]
+STEP15: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,0)];Sherlock[index=1;pos=(20,4);moving_rule=LR];Watson[index=2;pos=(25,0);moving_rule=DRLLLL]]
+STEP16: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,1)];Sherlock[index=1;pos=(20,5);moving_rule=LR];Watson[index=2;pos=(25,0);moving_rule=DRLLLL]]
+STEP17: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,0)];Sherlock[index=1;pos=(20,4);moving_rule=LR];Watson[index=2;pos=(25,0);moving_rule=DRLLLL]]
+STEP18: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,1)];Sherlock[index=1;pos=(20,5);moving_rule=LR];Watson[index=2;pos=(25,0);moving_rule=DRLLLL]]
+STEP19: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,0)];Sherlock[index=1;pos=(20,4);moving_rule=LR];Watson[index=2;pos=(25,0);moving_rule=DRLLLL]]
+End.

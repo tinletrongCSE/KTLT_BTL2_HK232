@@ -1,0 +1,24 @@
+Sherlock[index=1;pos=(9,3);moving_rule=L]
+Watson[index=2;pos=(6,6);moving_rule=LD]
+Criminal[index=0;pos=(7,14)]
+STEP1: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(7,15)];Sherlock[index=1;pos=(9,2);moving_rule=L];Watson[index=2;pos=(6,5);moving_rule=LD]]
+STEP2: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(6,15)];Sherlock[index=1;pos=(9,1);moving_rule=L];Watson[index=2;pos=(7,5);moving_rule=LD]]
+STEP3: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(5,15)];Sherlock[index=1;pos=(9,0);moving_rule=L];Watson[index=2;pos=(7,4);moving_rule=LD]]
+STEP4: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(4,15)];Sherlock[index=1;pos=(9,0);moving_rule=L];Watson[index=2;pos=(8,4);moving_rule=LD]]
+STEP5: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(3,15)];Sherlock[index=1;pos=(9,0);moving_rule=L];Watson[index=2;pos=(8,3);moving_rule=LD]]
+STEP6: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(2,15)];Sherlock[index=1;pos=(9,0);moving_rule=L];Watson[index=2;pos=(9,3);moving_rule=LD]]
+STEP7: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(1,15)];Sherlock[index=1;pos=(9,0);moving_rule=L];Watson[index=2;pos=(9,2);moving_rule=LD]]
+STEP8: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,15)];Sherlock[index=1;pos=(9,0);moving_rule=L];Watson[index=2;pos=(10,2);moving_rule=LD]]
+STEP9: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,16)];Sherlock[index=1;pos=(9,0);moving_rule=L];Watson[index=2;pos=(10,1);moving_rule=LD]]
+STEP10: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,17)];Sherlock[index=1;pos=(9,0);moving_rule=L];Watson[index=2;pos=(11,1);moving_rule=LD]]
+End.

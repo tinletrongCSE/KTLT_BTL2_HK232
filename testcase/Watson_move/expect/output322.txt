@@ -1,0 +1,8 @@
+Watson[index=0;pos=(2,8);moving_rule=U]
+STEP1: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(1,8);moving_rule=U]]
+STEP2: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(0,8);moving_rule=U]]
+STEP3: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(0,8);moving_rule=U]]
+End.

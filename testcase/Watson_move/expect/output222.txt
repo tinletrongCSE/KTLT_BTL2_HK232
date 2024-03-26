@@ -1,0 +1,6 @@
+Watson[index=0;pos=(1,19);moving_rule=DD]
+STEP1: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(1,19);moving_rule=DD]]
+STEP2: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(1,19);moving_rule=DD]]
+End.

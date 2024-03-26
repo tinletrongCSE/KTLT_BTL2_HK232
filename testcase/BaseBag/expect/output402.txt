@@ -1,0 +1,50 @@
+Sherlock[index=0;pos=(1,3);moving_rule=RL] HP: 105 EXP: 771
+Watson[index=1;pos=(2,1);moving_rule=UD] HP: 465 EXP: 47
+BaseBag[count=0]
+BaseBag[count=0]
+LINE 5: * Insert ENERGY_DRINK into bag
+SherlockBag: BaseBag[count=1;EnergyDrink]
+WatsonBag BaseBag[count=1;EnergyDrink]
+LINE 6: * Get  from bag
+SherlockBag: BaseBag[count=1;EnergyDrink]
+WatsonBag BaseBag[count=1;EnergyDrink]
+LINE 7: * Get FIRST_AID from bag
+SherlockBag: BaseBag[count=1;EnergyDrink]
+WatsonBag BaseBag[count=1;EnergyDrink]
+LINE 8: * Get MAGIC_BOOK from bag
+SherlockBag: BaseBag[count=1;EnergyDrink]
+WatsonBag BaseBag[count=1;EnergyDrink]
+LINE 9: * Get  from bag
+SherlockBag: BaseBag[count=1;EnergyDrink]
+WatsonBag BaseBag[count=1;EnergyDrink]
+LINE 10: * Get ENERGY_DRINK from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 11: * Get  from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 12: * Insert FIRST_AID into bag
+SherlockBag: BaseBag[count=1;FirstAid]
+WatsonBag BaseBag[count=1;FirstAid]
+LINE 13: * Get  from bag
+SherlockBag: BaseBag[count=1;FirstAid]
+WatsonBag BaseBag[count=0]
+LINE 14: * Insert ENERGY_DRINK into bag
+SherlockBag: BaseBag[count=2;EnergyDrink;FirstAid]
+WatsonBag BaseBag[count=1;EnergyDrink]
+LINE 15: * Insert FIRST_AID into bag
+SherlockBag: BaseBag[count=3;FirstAid;EnergyDrink;FirstAid]
+WatsonBag BaseBag[count=2;FirstAid;EnergyDrink]
+LINE 16: * Insert EXCEMPTION_CARD into bag
+SherlockBag: BaseBag[count=4;ExcemptionCard;FirstAid;EnergyDrink;FirstAid]
+WatsonBag BaseBag[count=3;ExcemptionCard;FirstAid;EnergyDrink]
+LINE 17: * Get FIRST_AID from bag
+SherlockBag: BaseBag[count=3;ExcemptionCard;EnergyDrink;FirstAid]
+WatsonBag BaseBag[count=2;ExcemptionCard;EnergyDrink]
+LINE 18: * Get  from bag
+SherlockBag: BaseBag[count=3;ExcemptionCard;EnergyDrink;FirstAid]
+WatsonBag BaseBag[count=2;ExcemptionCard;EnergyDrink]
+LINE 19: * Insert ENERGY_DRINK into bag
+SherlockBag: BaseBag[count=4;EnergyDrink;ExcemptionCard;EnergyDrink;FirstAid]
+WatsonBag BaseBag[count=3;EnergyDrink;ExcemptionCard;EnergyDrink]
+End.

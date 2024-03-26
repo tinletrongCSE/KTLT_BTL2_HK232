@@ -1,0 +1,62 @@
+Sherlock[index=1;pos=(6,7);moving_rule=RRRDURLLDLULDUULLRDRD]
+STEP1: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(6,7);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP2: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(6,7);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP3: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(6,7);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP4: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(6,7);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP5: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(5,7);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP6: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(5,8);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP7: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(5,7);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP8: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(5,6);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP9: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(6,6);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP10: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(6,5);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP11: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(5,5);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP12: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(5,4);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP13: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(6,4);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP14: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(5,4);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP15: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(4,4);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP16: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(4,4);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP17: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(4,4);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP18: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(4,5);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP19: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(5,5);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP20: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(5,6);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP21: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(6,6);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP22: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(6,7);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP23: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(6,7);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP24: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(6,7);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP25: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(6,7);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP26: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(5,7);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP27: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(5,8);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP28: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(5,7);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP29: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(5,6);moving_rule=RRRDURLLDLULDUULLRDRD]]
+STEP30: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(6,6);moving_rule=RRRDURLLDLULDUULLRDRD]]
+End.

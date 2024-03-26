@@ -1,0 +1,65 @@
+Sherlock[index=0;pos=(1,3);moving_rule=RL] HP: 147 EXP: 709
+Watson[index=1;pos=(2,1);moving_rule=UD] HP: 300 EXP: 859
+BaseBag[count=0]
+BaseBag[count=0]
+LINE 5: * Get  from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 6: * Get FIRST_AID from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 7: * Get FIRST_AID from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 8: * Get  from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 9: * Insert ENERGY_DRINK into bag
+SherlockBag: BaseBag[count=1;EnergyDrink]
+WatsonBag BaseBag[count=1;EnergyDrink]
+LINE 10: * Insert MAGIC_BOOK into bag
+SherlockBag: BaseBag[count=2;MagicBook;EnergyDrink]
+WatsonBag BaseBag[count=2;MagicBook;EnergyDrink]
+LINE 11: * Insert MAGIC_BOOK into bag
+SherlockBag: BaseBag[count=3;MagicBook;MagicBook;EnergyDrink]
+WatsonBag BaseBag[count=3;MagicBook;MagicBook;EnergyDrink]
+LINE 12: * Get EXCEMPTION_CARD from bag
+SherlockBag: BaseBag[count=3;MagicBook;MagicBook;EnergyDrink]
+WatsonBag BaseBag[count=3;MagicBook;MagicBook;EnergyDrink]
+LINE 13: * Insert FIRST_AID into bag
+SherlockBag: BaseBag[count=4;FirstAid;MagicBook;MagicBook;EnergyDrink]
+WatsonBag BaseBag[count=4;FirstAid;MagicBook;MagicBook;EnergyDrink]
+LINE 14: * Get  from bag
+SherlockBag: BaseBag[count=4;FirstAid;MagicBook;MagicBook;EnergyDrink]
+WatsonBag BaseBag[count=4;FirstAid;MagicBook;MagicBook;EnergyDrink]
+LINE 15: * Insert ENERGY_DRINK into bag
+SherlockBag: BaseBag[count=5;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+WatsonBag BaseBag[count=5;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+LINE 16: * Insert PASSING_CARD into bag
+SherlockBag: BaseBag[count=6;PassingCard;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+WatsonBag BaseBag[count=6;PassingCard;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+LINE 17: * Insert MAGIC_BOOK into bag
+SherlockBag: BaseBag[count=7;MagicBook;PassingCard;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+WatsonBag BaseBag[count=7;MagicBook;PassingCard;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+LINE 18: * Insert PASSING_CARD into bag
+SherlockBag: BaseBag[count=8;PassingCard;MagicBook;PassingCard;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+WatsonBag BaseBag[count=8;PassingCard;MagicBook;PassingCard;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+LINE 19: * Insert MAGIC_BOOK into bag
+SherlockBag: BaseBag[count=9;MagicBook;PassingCard;MagicBook;PassingCard;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+WatsonBag BaseBag[count=9;MagicBook;PassingCard;MagicBook;PassingCard;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+LINE 20: * Insert MAGIC_BOOK into bag
+SherlockBag: BaseBag[count=10;MagicBook;MagicBook;PassingCard;MagicBook;PassingCard;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+WatsonBag BaseBag[count=10;MagicBook;MagicBook;PassingCard;MagicBook;PassingCard;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+LINE 21: * Get  from bag
+SherlockBag: BaseBag[count=10;MagicBook;MagicBook;PassingCard;MagicBook;PassingCard;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+WatsonBag BaseBag[count=10;MagicBook;MagicBook;PassingCard;MagicBook;PassingCard;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+LINE 22: * Insert PASSING_CARD into bag
+SherlockBag: BaseBag[count=11;PassingCard;MagicBook;MagicBook;PassingCard;MagicBook;PassingCard;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+WatsonBag BaseBag[count=11;PassingCard;MagicBook;MagicBook;PassingCard;MagicBook;PassingCard;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+LINE 23: * Get  from bag
+SherlockBag: BaseBag[count=11;PassingCard;MagicBook;MagicBook;PassingCard;MagicBook;PassingCard;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+WatsonBag BaseBag[count=11;PassingCard;MagicBook;MagicBook;PassingCard;MagicBook;PassingCard;EnergyDrink;FirstAid;MagicBook;MagicBook;EnergyDrink]
+LINE 24: * Get ENERGY_DRINK from bag
+SherlockBag: BaseBag[count=10;MagicBook;MagicBook;PassingCard;MagicBook;PassingCard;PassingCard;FirstAid;MagicBook;MagicBook;EnergyDrink]
+WatsonBag BaseBag[count=10;MagicBook;MagicBook;PassingCard;MagicBook;PassingCard;PassingCard;FirstAid;MagicBook;MagicBook;EnergyDrink]
+End.

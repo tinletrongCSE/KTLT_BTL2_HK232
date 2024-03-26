@@ -1,0 +1,6 @@
+Sherlock[index=1;pos=(9,7);moving_rule=L]
+Watson[index=2;pos=(2,12);moving_rule=D]
+Criminal[index=0;pos=(0,18)]
+STEP1: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(0,19)];Sherlock[index=1;pos=(9,6);moving_rule=L];Watson[index=2;pos=(3,12);moving_rule=D]]
+End.

@@ -1,0 +1,8 @@
+Sherlock[index=1;pos=(11,4);moving_rule=RD]
+Watson[index=2;pos=(12,1);moving_rule=UU]
+Criminal[index=0;pos=(19,4)]
+STEP1: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(20,4)];Sherlock[index=1;pos=(11,4);moving_rule=RD];Watson[index=2;pos=(12,1);moving_rule=UU]]
+STEP2: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(21,4)];Sherlock[index=1;pos=(12,4);moving_rule=RD];Watson[index=2;pos=(12,1);moving_rule=UU]]
+End.

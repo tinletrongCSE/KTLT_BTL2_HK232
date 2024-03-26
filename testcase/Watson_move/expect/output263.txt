@@ -1,0 +1,60 @@
+Watson[index=0;pos=(9,19);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]
+STEP1: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(10,19);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP2: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(10,18);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP3: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(10,17);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP4: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(10,16);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP5: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(11,16);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP6: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(10,16);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP7: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(10,15);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP8: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(11,15);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP9: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(10,15);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP10: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(10,16);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP11: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(11,16);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP12: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(10,16);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP13: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(10,15);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP14: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(9,15);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP15: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(9,14);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP16: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(9,15);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP17: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(8,15);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP18: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(7,15);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP19: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(6,15);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP20: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(5,15);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP21: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(4,15);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP22: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(5,15);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP23: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(5,14);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP24: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(6,14);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP25: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(7,14);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP26: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(6,14);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP27: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(7,14);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP28: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(6,14);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+STEP29: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(6,13);moving_rule=DLLLDULDURDULULRUUUUUDLDDUDUL]]
+End.

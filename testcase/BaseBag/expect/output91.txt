@@ -1,0 +1,41 @@
+Sherlock[index=0;pos=(1,3);moving_rule=RL] HP: 352 EXP: 146
+Watson[index=1;pos=(2,1);moving_rule=UD] HP: 367 EXP: 826
+BaseBag[count=0]
+BaseBag[count=0]
+LINE 5: * Get MAGIC_BOOK from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 6: * Get  from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 7: * Insert PASSING_CARD into bag
+SherlockBag: BaseBag[count=1;PassingCard]
+WatsonBag BaseBag[count=1;PassingCard]
+LINE 8: * Get MAGIC_BOOK from bag
+SherlockBag: BaseBag[count=1;PassingCard]
+WatsonBag BaseBag[count=1;PassingCard]
+LINE 9: * Insert EXCEMPTION_CARD into bag
+SherlockBag: BaseBag[count=2;ExcemptionCard;PassingCard]
+WatsonBag BaseBag[count=2;ExcemptionCard;PassingCard]
+LINE 10: * Insert PASSING_CARD into bag
+SherlockBag: BaseBag[count=3;PassingCard;ExcemptionCard;PassingCard]
+WatsonBag BaseBag[count=3;PassingCard;ExcemptionCard;PassingCard]
+LINE 11: * Get EXCEMPTION_CARD from bag
+SherlockBag: BaseBag[count=2;PassingCard;PassingCard]
+WatsonBag BaseBag[count=2;PassingCard;PassingCard]
+LINE 12: * Insert MAGIC_BOOK into bag
+SherlockBag: BaseBag[count=3;MagicBook;PassingCard;PassingCard]
+WatsonBag BaseBag[count=3;MagicBook;PassingCard;PassingCard]
+LINE 13: * Insert EXCEMPTION_CARD into bag
+SherlockBag: BaseBag[count=4;ExcemptionCard;MagicBook;PassingCard;PassingCard]
+WatsonBag BaseBag[count=4;ExcemptionCard;MagicBook;PassingCard;PassingCard]
+LINE 14: * Get ENERGY_DRINK from bag
+SherlockBag: BaseBag[count=4;ExcemptionCard;MagicBook;PassingCard;PassingCard]
+WatsonBag BaseBag[count=4;ExcemptionCard;MagicBook;PassingCard;PassingCard]
+LINE 15: * Insert MAGIC_BOOK into bag
+SherlockBag: BaseBag[count=5;MagicBook;ExcemptionCard;MagicBook;PassingCard;PassingCard]
+WatsonBag BaseBag[count=5;MagicBook;ExcemptionCard;MagicBook;PassingCard;PassingCard]
+LINE 16: * Insert EXCEMPTION_CARD into bag
+SherlockBag: BaseBag[count=6;ExcemptionCard;MagicBook;ExcemptionCard;MagicBook;PassingCard;PassingCard]
+WatsonBag BaseBag[count=6;ExcemptionCard;MagicBook;ExcemptionCard;MagicBook;PassingCard;PassingCard]
+End.

@@ -1,0 +1,47 @@
+Sherlock[index=0;pos=(1,3);moving_rule=RL] HP: 183 EXP: 745
+Watson[index=1;pos=(2,1);moving_rule=UD] HP: 64 EXP: 347
+BaseBag[count=0]
+BaseBag[count=0]
+LINE 5: * Get EXCEMPTION_CARD from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 6: * Get  from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 7: * Get  from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 8: * Get MAGIC_BOOK from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 9: * Get ENERGY_DRINK from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 10: * Get ENERGY_DRINK from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 11: * Get EXCEMPTION_CARD from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 12: * Get  from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 13: * Insert EXCEMPTION_CARD into bag
+SherlockBag: BaseBag[count=1;ExcemptionCard]
+WatsonBag BaseBag[count=1;ExcemptionCard]
+LINE 14: * Insert MAGIC_BOOK into bag
+SherlockBag: BaseBag[count=2;MagicBook;ExcemptionCard]
+WatsonBag BaseBag[count=2;MagicBook;ExcemptionCard]
+LINE 15: * Insert EXCEMPTION_CARD into bag
+SherlockBag: BaseBag[count=3;ExcemptionCard;MagicBook;ExcemptionCard]
+WatsonBag BaseBag[count=3;ExcemptionCard;MagicBook;ExcemptionCard]
+LINE 16: * Get  from bag
+SherlockBag: BaseBag[count=3;ExcemptionCard;MagicBook;ExcemptionCard]
+WatsonBag BaseBag[count=3;ExcemptionCard;MagicBook;ExcemptionCard]
+LINE 17: * Insert MAGIC_BOOK into bag
+SherlockBag: BaseBag[count=4;MagicBook;ExcemptionCard;MagicBook;ExcemptionCard]
+WatsonBag BaseBag[count=4;MagicBook;ExcemptionCard;MagicBook;ExcemptionCard]
+LINE 18: * Get  from bag
+SherlockBag: BaseBag[count=4;MagicBook;ExcemptionCard;MagicBook;ExcemptionCard]
+WatsonBag BaseBag[count=4;MagicBook;ExcemptionCard;MagicBook;ExcemptionCard]
+End.

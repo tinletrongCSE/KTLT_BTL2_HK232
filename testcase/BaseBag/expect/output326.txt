@@ -1,0 +1,38 @@
+Sherlock[index=0;pos=(1,3);moving_rule=RL] HP: 44 EXP: 859
+Watson[index=1;pos=(2,1);moving_rule=UD] HP: 100 EXP: 788
+BaseBag[count=0]
+BaseBag[count=0]
+LINE 5: * Insert MAGIC_BOOK into bag
+SherlockBag: BaseBag[count=1;MagicBook]
+WatsonBag BaseBag[count=1;MagicBook]
+LINE 6: * Insert MAGIC_BOOK into bag
+SherlockBag: BaseBag[count=2;MagicBook;MagicBook]
+WatsonBag BaseBag[count=2;MagicBook;MagicBook]
+LINE 7: * Get  from bag
+SherlockBag: BaseBag[count=2;MagicBook;MagicBook]
+WatsonBag BaseBag[count=2;MagicBook;MagicBook]
+LINE 8: * Get  from bag
+SherlockBag: BaseBag[count=2;MagicBook;MagicBook]
+WatsonBag BaseBag[count=2;MagicBook;MagicBook]
+LINE 9: * Get  from bag
+SherlockBag: BaseBag[count=2;MagicBook;MagicBook]
+WatsonBag BaseBag[count=2;MagicBook;MagicBook]
+LINE 10: * Get  from bag
+SherlockBag: BaseBag[count=2;MagicBook;MagicBook]
+WatsonBag BaseBag[count=2;MagicBook;MagicBook]
+LINE 11: * Insert MAGIC_BOOK into bag
+SherlockBag: BaseBag[count=3;MagicBook;MagicBook;MagicBook]
+WatsonBag BaseBag[count=3;MagicBook;MagicBook;MagicBook]
+LINE 12: * Get  from bag
+SherlockBag: BaseBag[count=3;MagicBook;MagicBook;MagicBook]
+WatsonBag BaseBag[count=3;MagicBook;MagicBook;MagicBook]
+LINE 13: * Get  from bag
+SherlockBag: BaseBag[count=3;MagicBook;MagicBook;MagicBook]
+WatsonBag BaseBag[count=3;MagicBook;MagicBook;MagicBook]
+LINE 14: * Get PASSING_CARD from bag
+SherlockBag: BaseBag[count=3;MagicBook;MagicBook;MagicBook]
+WatsonBag BaseBag[count=3;MagicBook;MagicBook;MagicBook]
+LINE 15: * Get  from bag
+SherlockBag: BaseBag[count=3;MagicBook;MagicBook;MagicBook]
+WatsonBag BaseBag[count=3;MagicBook;MagicBook;MagicBook]
+End.

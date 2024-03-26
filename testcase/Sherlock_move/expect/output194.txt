@@ -1,0 +1,6 @@
+Sherlock[index=1;pos=(13,0);moving_rule=D]
+STEP1: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(14,0);moving_rule=D]]
+STEP2: * Sherlock makes a move
+ArrayMovingObject[count=1;capacity=10;Sherlock[index=1;pos=(15,0);moving_rule=D]]
+End.

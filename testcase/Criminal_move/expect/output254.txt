@@ -1,0 +1,40 @@
+Sherlock[index=1;pos=(23,3);moving_rule=ULURLRUDDDDLDDL]
+Watson[index=2;pos=(28,6);moving_rule=RULLUD]
+Criminal[index=0;pos=(22,3)]
+STEP1: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(21,3)];Sherlock[index=1;pos=(22,3);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(28,7);moving_rule=RULLUD]]
+STEP2: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(20,3)];Sherlock[index=1;pos=(22,2);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(27,7);moving_rule=RULLUD]]
+STEP3: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(19,3)];Sherlock[index=1;pos=(21,2);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(27,6);moving_rule=RULLUD]]
+STEP4: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(18,3)];Sherlock[index=1;pos=(21,3);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(27,5);moving_rule=RULLUD]]
+STEP5: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(17,3)];Sherlock[index=1;pos=(21,2);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(26,5);moving_rule=RULLUD]]
+STEP6: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(16,3)];Sherlock[index=1;pos=(21,3);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(27,5);moving_rule=RULLUD]]
+STEP7: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(15,3)];Sherlock[index=1;pos=(20,3);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(27,6);moving_rule=RULLUD]]
+STEP8: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(14,3)];Sherlock[index=1;pos=(21,3);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(26,6);moving_rule=RULLUD]]
+STEP9: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(13,3)];Sherlock[index=1;pos=(22,3);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(26,5);moving_rule=RULLUD]]
+STEP10: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,3)];Sherlock[index=1;pos=(23,3);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(26,4);moving_rule=RULLUD]]
+STEP11: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(11,3)];Sherlock[index=1;pos=(24,3);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(25,4);moving_rule=RULLUD]]
+STEP12: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(10,3)];Sherlock[index=1;pos=(24,2);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(26,4);moving_rule=RULLUD]]
+STEP13: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(9,3)];Sherlock[index=1;pos=(25,2);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(26,5);moving_rule=RULLUD]]
+STEP14: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(8,3)];Sherlock[index=1;pos=(26,2);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(25,5);moving_rule=RULLUD]]
+STEP15: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(7,3)];Sherlock[index=1;pos=(26,1);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(25,4);moving_rule=RULLUD]]
+STEP16: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(6,3)];Sherlock[index=1;pos=(25,1);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(25,3);moving_rule=RULLUD]]
+STEP17: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(5,3)];Sherlock[index=1;pos=(25,0);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(24,3);moving_rule=RULLUD]]
+STEP18: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(4,3)];Sherlock[index=1;pos=(24,0);moving_rule=ULURLRUDDDDLDDL];Watson[index=2;pos=(25,3);moving_rule=RULLUD]]
+End.

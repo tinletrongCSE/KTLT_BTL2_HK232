@@ -1,0 +1,38 @@
+Sherlock[index=0;pos=(1,3);moving_rule=RL] HP: 483 EXP: 894
+Watson[index=1;pos=(2,1);moving_rule=UD] HP: 104 EXP: 266
+BaseBag[count=0]
+BaseBag[count=0]
+LINE 5: * Get MAGIC_BOOK from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 6: * Get  from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 7: * Insert MAGIC_BOOK into bag
+SherlockBag: BaseBag[count=1;MagicBook]
+WatsonBag BaseBag[count=1;MagicBook]
+LINE 8: * Insert ENERGY_DRINK into bag
+SherlockBag: BaseBag[count=2;EnergyDrink;MagicBook]
+WatsonBag BaseBag[count=2;EnergyDrink;MagicBook]
+LINE 9: * Insert ENERGY_DRINK into bag
+SherlockBag: BaseBag[count=3;EnergyDrink;EnergyDrink;MagicBook]
+WatsonBag BaseBag[count=3;EnergyDrink;EnergyDrink;MagicBook]
+LINE 10: * Get FIRST_AID from bag
+SherlockBag: BaseBag[count=3;EnergyDrink;EnergyDrink;MagicBook]
+WatsonBag BaseBag[count=3;EnergyDrink;EnergyDrink;MagicBook]
+LINE 11: * Get FIRST_AID from bag
+SherlockBag: BaseBag[count=3;EnergyDrink;EnergyDrink;MagicBook]
+WatsonBag BaseBag[count=3;EnergyDrink;EnergyDrink;MagicBook]
+LINE 12: * Insert MAGIC_BOOK into bag
+SherlockBag: BaseBag[count=4;MagicBook;EnergyDrink;EnergyDrink;MagicBook]
+WatsonBag BaseBag[count=4;MagicBook;EnergyDrink;EnergyDrink;MagicBook]
+LINE 13: * Insert FIRST_AID into bag
+SherlockBag: BaseBag[count=5;FirstAid;MagicBook;EnergyDrink;EnergyDrink;MagicBook]
+WatsonBag BaseBag[count=5;FirstAid;MagicBook;EnergyDrink;EnergyDrink;MagicBook]
+LINE 14: * Get FIRST_AID from bag
+SherlockBag: BaseBag[count=4;MagicBook;EnergyDrink;EnergyDrink;MagicBook]
+WatsonBag BaseBag[count=4;MagicBook;EnergyDrink;EnergyDrink;MagicBook]
+LINE 15: * Insert MAGIC_BOOK into bag
+SherlockBag: BaseBag[count=5;MagicBook;MagicBook;EnergyDrink;EnergyDrink;MagicBook]
+WatsonBag BaseBag[count=5;MagicBook;MagicBook;EnergyDrink;EnergyDrink;MagicBook]
+End.

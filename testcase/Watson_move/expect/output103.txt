@@ -1,0 +1,52 @@
+Watson[index=0;pos=(20,17);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]
+STEP1: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(19,17);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP2: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(19,18);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP3: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(19,19);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP4: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(20,19);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP5: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(20,20);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP6: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(19,20);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP7: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(19,21);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP8: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(19,22);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP9: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(20,22);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP10: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(19,22);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP11: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(18,22);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP12: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(19,22);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP13: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(19,21);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP14: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(19,20);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP15: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(19,21);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP16: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(20,21);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP17: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(20,22);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP18: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(20,22);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP19: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(20,21);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP20: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(20,21);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP21: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(19,21);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP22: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(20,21);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP23: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(20,20);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP24: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(20,20);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+STEP25: * Watson makes a move
+ArrayMovingObject[count=1;capacity=10;Watson[index=0;pos=(19,20);moving_rule=URRDRURRDUUDLLRDRDLDUDLD]]
+End.

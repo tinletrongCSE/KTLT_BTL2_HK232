@@ -1,0 +1,47 @@
+Sherlock[index=0;pos=(1,3);moving_rule=RL] HP: 131 EXP: 475
+Watson[index=1;pos=(2,1);moving_rule=UD] HP: 129 EXP: 344
+BaseBag[count=0]
+BaseBag[count=0]
+LINE 5: * Get ENERGY_DRINK from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 6: * Get EXCEMPTION_CARD from bag
+SherlockBag: BaseBag[count=0]
+WatsonBag BaseBag[count=0]
+LINE 7: * Insert FIRST_AID into bag
+SherlockBag: BaseBag[count=1;FirstAid]
+WatsonBag BaseBag[count=1;FirstAid]
+LINE 8: * Get  from bag
+SherlockBag: BaseBag[count=1;FirstAid]
+WatsonBag BaseBag[count=0]
+LINE 9: * Get ENERGY_DRINK from bag
+SherlockBag: BaseBag[count=1;FirstAid]
+WatsonBag BaseBag[count=0]
+LINE 10: * Insert FIRST_AID into bag
+SherlockBag: BaseBag[count=2;FirstAid;FirstAid]
+WatsonBag BaseBag[count=1;FirstAid]
+LINE 11: * Insert ENERGY_DRINK into bag
+SherlockBag: BaseBag[count=3;EnergyDrink;FirstAid;FirstAid]
+WatsonBag BaseBag[count=2;EnergyDrink;FirstAid]
+LINE 12: * Insert FIRST_AID into bag
+SherlockBag: BaseBag[count=4;FirstAid;EnergyDrink;FirstAid;FirstAid]
+WatsonBag BaseBag[count=3;FirstAid;EnergyDrink;FirstAid]
+LINE 13: * Insert FIRST_AID into bag
+SherlockBag: BaseBag[count=5;FirstAid;FirstAid;EnergyDrink;FirstAid;FirstAid]
+WatsonBag BaseBag[count=4;FirstAid;FirstAid;EnergyDrink;FirstAid]
+LINE 14: * Get  from bag
+SherlockBag: BaseBag[count=5;FirstAid;FirstAid;EnergyDrink;FirstAid;FirstAid]
+WatsonBag BaseBag[count=3;FirstAid;EnergyDrink;FirstAid]
+LINE 15: * Insert MAGIC_BOOK into bag
+SherlockBag: BaseBag[count=6;MagicBook;FirstAid;FirstAid;EnergyDrink;FirstAid;FirstAid]
+WatsonBag BaseBag[count=4;MagicBook;FirstAid;EnergyDrink;FirstAid]
+LINE 16: * Get  from bag
+SherlockBag: BaseBag[count=6;MagicBook;FirstAid;FirstAid;EnergyDrink;FirstAid;FirstAid]
+WatsonBag BaseBag[count=3;MagicBook;EnergyDrink;FirstAid]
+LINE 17: * Get  from bag
+SherlockBag: BaseBag[count=6;MagicBook;FirstAid;FirstAid;EnergyDrink;FirstAid;FirstAid]
+WatsonBag BaseBag[count=2;EnergyDrink;MagicBook]
+LINE 18: * Insert PASSING_CARD into bag
+SherlockBag: BaseBag[count=7;PassingCard;MagicBook;FirstAid;FirstAid;EnergyDrink;FirstAid;FirstAid]
+WatsonBag BaseBag[count=3;PassingCard;EnergyDrink;MagicBook]
+End.

@@ -1,0 +1,50 @@
+Sherlock[index=1;pos=(1,20);moving_rule=ULDLULUDLUDL]
+Watson[index=2;pos=(2,21);moving_rule=UUDDLRDRUDD]
+Criminal[index=0;pos=(12,18)]
+STEP1: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,17)];Sherlock[index=1;pos=(0,20);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(1,21);moving_rule=UUDDLRDRUDD]]
+STEP2: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,16)];Sherlock[index=1;pos=(0,19);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(0,21);moving_rule=UUDDLRDRUDD]]
+STEP3: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,15)];Sherlock[index=1;pos=(1,19);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(1,21);moving_rule=UUDDLRDRUDD]]
+STEP4: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,14)];Sherlock[index=1;pos=(1,18);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(2,21);moving_rule=UUDDLRDRUDD]]
+STEP5: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,13)];Sherlock[index=1;pos=(0,18);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(2,20);moving_rule=UUDDLRDRUDD]]
+STEP6: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,12)];Sherlock[index=1;pos=(0,17);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(2,21);moving_rule=UUDDLRDRUDD]]
+STEP7: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,11)];Sherlock[index=1;pos=(0,17);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(3,21);moving_rule=UUDDLRDRUDD]]
+STEP8: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,10)];Sherlock[index=1;pos=(1,17);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(3,22);moving_rule=UUDDLRDRUDD]]
+STEP9: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,9)];Sherlock[index=1;pos=(1,16);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(2,22);moving_rule=UUDDLRDRUDD]]
+STEP10: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,8)];Sherlock[index=1;pos=(0,16);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(3,22);moving_rule=UUDDLRDRUDD]]
+STEP11: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,7)];Sherlock[index=1;pos=(1,16);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(4,22);moving_rule=UUDDLRDRUDD]]
+STEP12: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,6)];Sherlock[index=1;pos=(1,15);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(3,22);moving_rule=UUDDLRDRUDD]]
+STEP13: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,5)];Sherlock[index=1;pos=(0,15);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(2,22);moving_rule=UUDDLRDRUDD]]
+STEP14: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,4)];Sherlock[index=1;pos=(0,14);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(3,22);moving_rule=UUDDLRDRUDD]]
+STEP15: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(13,4)];Sherlock[index=1;pos=(1,14);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(4,22);moving_rule=UUDDLRDRUDD]]
+STEP16: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(13,3)];Sherlock[index=1;pos=(1,13);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(4,21);moving_rule=UUDDLRDRUDD]]
+STEP17: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(13,2)];Sherlock[index=1;pos=(0,13);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(4,22);moving_rule=UUDDLRDRUDD]]
+STEP18: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(13,1)];Sherlock[index=1;pos=(0,12);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(5,22);moving_rule=UUDDLRDRUDD]]
+STEP19: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(13,0)];Sherlock[index=1;pos=(0,12);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(5,22);moving_rule=UUDDLRDRUDD]]
+STEP20: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(14,0)];Sherlock[index=1;pos=(1,12);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(4,22);moving_rule=UUDDLRDRUDD]]
+STEP21: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(15,0)];Sherlock[index=1;pos=(1,11);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(5,22);moving_rule=UUDDLRDRUDD]]
+STEP22: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(14,0)];Sherlock[index=1;pos=(0,11);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(6,22);moving_rule=UUDDLRDRUDD]]
+STEP23: * Sherlock, Watson, Criminal makes a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(15,0)];Sherlock[index=1;pos=(1,11);moving_rule=ULDLULUDLUDL];Watson[index=2;pos=(5,22);moving_rule=UUDDLRDRUDD]]
+End.
