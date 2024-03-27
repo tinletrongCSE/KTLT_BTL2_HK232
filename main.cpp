@@ -429,27 +429,27 @@ public:
                 outfile << robotC->str() << endl;
                 arr_moving_obj->add(robotC);
             }
-            else if (i == 6)
-            {
-                outfile << "* Create new RobotS" << endl;
-                robotS = new RobotS(4, temp_pos, map, criminal, sherlock);
-                outfile << robotS->str() << endl;
-                arr_moving_obj->add(robotS);
-            }
-            else if (i == 9)
-            {
-                outfile << "* Create new RobotW" << endl;
-                robotW = new RobotW(5, temp_pos, map, criminal, watson);
-                outfile << robotW->str() << endl;
-                arr_moving_obj->add(robotW);
-            }
-            else if (i == 12)
-            {
-                outfile << "* Create new RobotCS" << endl;
-                robotSW = new RobotSW(6, temp_pos, map, criminal, sherlock, watson);
-                outfile << robotSW->str() << endl;
-                arr_moving_obj->add(robotSW);
-            }
+            // else if (i == 6)
+            // {
+            //     outfile << "* Create new RobotS" << endl;
+            //     robotS = new RobotS(4, temp_pos, map, criminal, sherlock);
+            //     outfile << robotS->str() << endl;
+            //     arr_moving_obj->add(robotS);
+            // }
+            // else if (i == 9)
+            // {
+            //     outfile << "* Create new RobotW" << endl;
+            //     robotW = new RobotW(5, temp_pos, map, criminal, watson);
+            //     outfile << robotW->str() << endl;
+            //     arr_moving_obj->add(robotW);
+            // }
+            // else if (i == 12)
+            // {
+            //     outfile << "* Create new RobotCS" << endl;
+            //     robotSW = new RobotSW(6, temp_pos, map, criminal, sherlock, watson);
+            //     outfile << robotSW->str() << endl;
+            //     arr_moving_obj->add(robotSW);
+            // }
         }
         outfile << "End." << endl;
         outfile.close();
