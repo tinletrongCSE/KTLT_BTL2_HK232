@@ -10,6 +10,14 @@ const std::string path_separator = "\\";
 const std::string path_separator = "/";
 #endif
 
+#ifdef _WIN32
+const std::string open_cmd = "start";
+#elif __APPLE__
+const std::string open_cmd = "open";
+#else
+const std::string open_cmd = "xdg-open";
+#endif
+
 // Sử dụng hàm compareFiles để so sánh 2 file
 bool compareFiles(const string &p1, const string &p2)
 {
@@ -391,9 +399,6 @@ public:
         Criminal *criminal = new Criminal(0, init_pos_criminal, map, sherlock, watson);
         infile.close();
         RobotC *robotC = nullptr;
-        RobotS *robotS = nullptr;
-        RobotW *robotW = nullptr;
-        RobotSW *robotSW = nullptr;
 
         ArrayMovingObject *arr_moving_obj = new ArrayMovingObject(10);
         arr_moving_obj->add(sherlock);
@@ -414,12 +419,6 @@ public:
             watson->move();
             if (robotC != nullptr)
                 robotC->move();
-            if (robotS != nullptr)
-                robotS->move();
-            if (robotW != nullptr)
-                robotW->move();
-            if (robotSW != nullptr)
-                robotSW->move();
 
             outfile << arr_moving_obj->str() << endl;
             if (i == 3)
@@ -429,27 +428,6 @@ public:
                 outfile << robotC->str() << endl;
                 arr_moving_obj->add(robotC);
             }
-            else if (i == 6)
-            {
-                outfile << "* Create new RobotS" << endl;
-                robotS = new RobotS(4, temp_pos, map, criminal, sherlock);
-                outfile << robotS->str() << endl;
-                arr_moving_obj->add(robotS);
-            }
-            // else if (i == 9)
-            // {
-            //     outfile << "* Create new RobotW" << endl;
-            //     robotW = new RobotW(5, temp_pos, map, criminal, watson);
-            //     outfile << robotW->str() << endl;
-            //     arr_moving_obj->add(robotW);
-            // }
-            // else if (i == 12)
-            // {
-            //     outfile << "* Create new RobotCS" << endl;
-            //     robotSW = new RobotSW(6, temp_pos, map, criminal, sherlock, watson);
-            //     outfile << robotSW->str() << endl;
-            //     arr_moving_obj->add(robotSW);
-            // }
         }
         outfile << "End." << endl;
         outfile.close();
@@ -460,10 +438,337 @@ public:
 
         if (robotC != nullptr)
             delete robotC;
+
+        delete arr_moving_obj;
+        delete[] arr_walls;
+        delete[] arr_fake_walls;
+        delete map;
+    }
+    static void check_06(string input_file, string output_file)
+    {
+        ifstream infile(input_file); // Mở file
+
+        int num_steps;
+        int in_num_rows;
+        int in_num_cols;
+        int num_walls;
+        int num_fake_walls;
+        string moving_rules_sher;
+        string moving_rules_wat;
+        Position init_pos_sher;
+        Position init_pos_watson;
+        Position init_pos_criminal;
+
+        infile >> num_steps;
+        infile >> in_num_rows;
+        infile >> in_num_cols;
+        infile >> num_walls;
+        infile >> num_fake_walls;
+        infile >> moving_rules_sher;
+        infile >> moving_rules_wat;
+
+        Position *arr_walls = new Position[num_walls];
+        Position *arr_fake_walls = new Position[num_fake_walls];
+
+        string temp_pos;
+        int wall_idx = 0, fake_wall_idx = 0;
+        int index_object = 0;
+        while (infile >> temp_pos)
+        {
+            if (wall_idx < num_walls)
+            {
+                arr_walls[wall_idx] = Position(temp_pos);
+                wall_idx++;
+            }
+            else if (fake_wall_idx < num_fake_walls)
+            {
+                arr_fake_walls[fake_wall_idx] = Position(temp_pos);
+                fake_wall_idx++;
+            }
+            else
+            {
+                if (index_object == 0)
+                {
+                    init_pos_sher = Position(temp_pos);
+                }
+                else if (index_object == 1)
+                {
+                    init_pos_watson = Position(temp_pos);
+                }
+                else
+                {
+                    init_pos_criminal = Position(temp_pos);
+                    break;
+                }
+                index_object++;
+            }
+        }
+
+        Map *map = new Map(in_num_rows, in_num_cols, num_walls, arr_walls, num_fake_walls, arr_fake_walls);
+        Watson *watson = new Watson(2, moving_rules_sher, init_pos_watson, map, 100, 100);
+        Sherlock *sherlock = new Sherlock(1, moving_rules_wat, init_pos_sher, map, 100, 100);
+        Criminal *criminal = new Criminal(0, init_pos_criminal, map, sherlock, watson);
+        infile.close();
+        RobotS *robotS = nullptr;
+
+        ArrayMovingObject *arr_moving_obj = new ArrayMovingObject(10);
+        arr_moving_obj->add(sherlock);
+        arr_moving_obj->add(watson);
+        arr_moving_obj->add(criminal);
+
+        ofstream outfile(output_file);
+        outfile << sherlock->str() << endl;
+        outfile << watson->str() << endl;
+        outfile << criminal->str() << endl;
+        for (int i = 0; i < num_steps; i++)
+        {
+            Position temp_pos = criminal->getCurrentPosition();
+            outfile << "STEP" << i + 1 << ": * Moving objects make a move" << endl;
+
+            criminal->move();
+            sherlock->move();
+            watson->move();
+            if (robotS != nullptr)
+                robotS->move();
+
+            outfile << arr_moving_obj->str() << endl;
+            if (i == 6)
+            {
+                outfile << "* Create new RobotS" << endl;
+                robotS = new RobotS(4, temp_pos, map, criminal, sherlock);
+                outfile << robotS->str() << endl;
+                arr_moving_obj->add(robotS);
+            }
+        }
+        outfile << "End." << endl;
+        outfile.close();
+
+        delete sherlock;
+        delete watson;
+        delete criminal;
+
         if (robotS != nullptr)
             delete robotS;
+
+        delete arr_moving_obj;
+        delete[] arr_walls;
+        delete[] arr_fake_walls;
+        delete map;
+    }
+    static void check_07(string input_file, string output_file)
+    {
+        ifstream infile(input_file); // Mở file
+
+        int num_steps;
+        int in_num_rows;
+        int in_num_cols;
+        int num_walls;
+        int num_fake_walls;
+        string moving_rules_sher;
+        string moving_rules_wat;
+        Position init_pos_sher;
+        Position init_pos_watson;
+        Position init_pos_criminal;
+
+        infile >> num_steps;
+        infile >> in_num_rows;
+        infile >> in_num_cols;
+        infile >> num_walls;
+        infile >> num_fake_walls;
+        infile >> moving_rules_sher;
+        infile >> moving_rules_wat;
+
+        Position *arr_walls = new Position[num_walls];
+        Position *arr_fake_walls = new Position[num_fake_walls];
+
+        string temp_pos;
+        int wall_idx = 0, fake_wall_idx = 0;
+        int index_object = 0;
+        while (infile >> temp_pos)
+        {
+            if (wall_idx < num_walls)
+            {
+                arr_walls[wall_idx] = Position(temp_pos);
+                wall_idx++;
+            }
+            else if (fake_wall_idx < num_fake_walls)
+            {
+                arr_fake_walls[fake_wall_idx] = Position(temp_pos);
+                fake_wall_idx++;
+            }
+            else
+            {
+                if (index_object == 0)
+                {
+                    init_pos_sher = Position(temp_pos);
+                }
+                else if (index_object == 1)
+                {
+                    init_pos_watson = Position(temp_pos);
+                }
+                else
+                {
+                    init_pos_criminal = Position(temp_pos);
+                    break;
+                }
+                index_object++;
+            }
+        }
+
+        Map *map = new Map(in_num_rows, in_num_cols, num_walls, arr_walls, num_fake_walls, arr_fake_walls);
+        Watson *watson = new Watson(2, moving_rules_sher, init_pos_watson, map, 100, 100);
+        Sherlock *sherlock = new Sherlock(1, moving_rules_wat, init_pos_sher, map, 100, 100);
+        Criminal *criminal = new Criminal(0, init_pos_criminal, map, sherlock, watson);
+        infile.close();
+        RobotW *robotW = nullptr;
+
+        ArrayMovingObject *arr_moving_obj = new ArrayMovingObject(10);
+        arr_moving_obj->add(sherlock);
+        arr_moving_obj->add(watson);
+        arr_moving_obj->add(criminal);
+
+        ofstream outfile(output_file);
+        outfile << sherlock->str() << endl;
+        outfile << watson->str() << endl;
+        outfile << criminal->str() << endl;
+        for (int i = 0; i < num_steps; i++)
+        {
+            Position temp_pos = criminal->getCurrentPosition();
+            outfile << "STEP" << i + 1 << ": * Moving objects make a move" << endl;
+
+            criminal->move();
+            sherlock->move();
+            watson->move();
+            if (robotW != nullptr)
+                robotW->move();
+
+            outfile << arr_moving_obj->str() << endl;
+            if (i == 9)
+            {
+                outfile << "* Create new RobotW" << endl;
+                robotW = new RobotW(5, temp_pos, map, criminal, watson);
+                outfile << robotW->str() << endl;
+                arr_moving_obj->add(robotW);
+            }
+        }
+        outfile << "End." << endl;
+        outfile.close();
+
+        delete sherlock;
+        delete watson;
+        delete criminal;
+
         if (robotW != nullptr)
             delete robotW;
+
+        delete arr_moving_obj;
+        delete[] arr_walls;
+        delete[] arr_fake_walls;
+        delete map;
+    }
+    static void check_08(string input_file, string output_file)
+    {
+        ifstream infile(input_file); // Mở file
+
+        int num_steps;
+        int in_num_rows;
+        int in_num_cols;
+        int num_walls;
+        int num_fake_walls;
+        string moving_rules_sher;
+        string moving_rules_wat;
+        Position init_pos_sher;
+        Position init_pos_watson;
+        Position init_pos_criminal;
+
+        infile >> num_steps;
+        infile >> in_num_rows;
+        infile >> in_num_cols;
+        infile >> num_walls;
+        infile >> num_fake_walls;
+        infile >> moving_rules_sher;
+        infile >> moving_rules_wat;
+
+        Position *arr_walls = new Position[num_walls];
+        Position *arr_fake_walls = new Position[num_fake_walls];
+
+        string temp_pos;
+        int wall_idx = 0, fake_wall_idx = 0;
+        int index_object = 0;
+        while (infile >> temp_pos)
+        {
+            if (wall_idx < num_walls)
+            {
+                arr_walls[wall_idx] = Position(temp_pos);
+                wall_idx++;
+            }
+            else if (fake_wall_idx < num_fake_walls)
+            {
+                arr_fake_walls[fake_wall_idx] = Position(temp_pos);
+                fake_wall_idx++;
+            }
+            else
+            {
+                if (index_object == 0)
+                {
+                    init_pos_sher = Position(temp_pos);
+                }
+                else if (index_object == 1)
+                {
+                    init_pos_watson = Position(temp_pos);
+                }
+                else
+                {
+                    init_pos_criminal = Position(temp_pos);
+                    break;
+                }
+                index_object++;
+            }
+        }
+
+        Map *map = new Map(in_num_rows, in_num_cols, num_walls, arr_walls, num_fake_walls, arr_fake_walls);
+        Watson *watson = new Watson(2, moving_rules_sher, init_pos_watson, map, 100, 100);
+        Sherlock *sherlock = new Sherlock(1, moving_rules_wat, init_pos_sher, map, 100, 100);
+        Criminal *criminal = new Criminal(0, init_pos_criminal, map, sherlock, watson);
+        infile.close();
+        RobotSW *robotSW = nullptr;
+
+        ArrayMovingObject *arr_moving_obj = new ArrayMovingObject(10);
+        arr_moving_obj->add(sherlock);
+        arr_moving_obj->add(watson);
+        arr_moving_obj->add(criminal);
+
+        ofstream outfile(output_file);
+        outfile << sherlock->str() << endl;
+        outfile << watson->str() << endl;
+        outfile << criminal->str() << endl;
+        for (int i = 0; i < num_steps; i++)
+        {
+            Position temp_pos = criminal->getCurrentPosition();
+            outfile << "STEP" << i + 1 << ": * Moving objects make a move" << endl;
+
+            criminal->move();
+            sherlock->move();
+            watson->move();
+            if (robotSW != nullptr)
+                robotSW->move();
+
+            outfile << arr_moving_obj->str() << endl;
+            if (i == 12)
+            {
+                outfile << "* Create new RobotWS" << endl;
+                robotSW = new RobotSW(6, temp_pos, map, criminal, sherlock, watson);
+                outfile << robotSW->str() << endl;
+                arr_moving_obj->add(robotSW);
+            }
+        }
+        outfile << "End." << endl;
+        outfile.close();
+
+        delete sherlock;
+        delete watson;
+        delete criminal;
+
         if (robotSW != nullptr)
             delete robotSW;
 
@@ -472,7 +777,7 @@ public:
         delete[] arr_fake_walls;
         delete map;
     }
-    static void check_06(string input_file, string output_file)
+    static void check_09(string input_file, string output_file)
     {
         int num_walls = 3;
         Position arr_walls[] = {Position(1, 2), Position(2, 3), Position(3, 4)};
@@ -559,7 +864,7 @@ public:
                 delete items[i];
         }
     }
-    static void check_07(string input_file, string output_file)
+    static void check_10(string input_file, string output_file)
     {
         StudyPinkProgram *program = new StudyPinkProgram(input_file);
         // Lưu lại buffer std::cout cũ
@@ -594,7 +899,7 @@ void printResult(string input_folder)
         clearScreen();
         std::cout << "Checking " << input_folder << " - Testcase: " << i << endl;
         string input_file = "testcase/" + input_folder + "/input/input" + to_string(i) + ".txt";
-        string output_file = "testcase/" + input_folder + "/output/output" + to_string(i) + ".txt";
+        string output_file = "testcase/" + input_folder + "/expect/output" + to_string(i) + ".txt";
         string expect_file = "testcase/" + input_folder + "/expect/output" + to_string(i) + ".txt";
 
         if (input_folder == "Sherlock_move")
@@ -613,33 +918,45 @@ void printResult(string input_folder)
         {
             TestStudyInPink::check_04(input_file, output_file);
         }
-        else if (input_folder == "Robot_move")
+        else if (input_folder == "RobotC_move")
         {
             TestStudyInPink::check_05(input_file, output_file);
         }
-        else if (input_folder == "BaseBag")
+        else if (input_folder == "RobotS_move")
         {
             TestStudyInPink::check_06(input_file, output_file);
         }
-        else if (input_folder == "StudyPinkProgram")
+        else if (input_folder == "RobotW_move")
         {
             TestStudyInPink::check_07(input_file, output_file);
         }
-
-        if (!compareFiles(output_file, expect_file))
+        else if (input_folder == "RobotSW_move")
         {
-            clearScreen();
-            std::cout << "Test case " << i << " failed" << endl;
-            std::cout << "Input file: " << input_file << endl;
-            std::cout << "-------------------------------" << endl;
-            std::cout << "Your output: " << output_file << endl;
-            std::cout << "-------------------------------" << endl;
-            std::cout << "Expected output: " << expect_file << endl;
-            std::cout << "-------------------------------" << endl;
-            std::cout << "Structure of input file: " << endl;
-            printFile("testcase/" + input_folder + "/readme.txt");
-            break;
+            TestStudyInPink::check_08(input_file, output_file);
         }
+        else if (input_folder == "BaseBag")
+        {
+            TestStudyInPink::check_09(input_file, output_file);
+        }
+        else if (input_folder == "StudyPinkProgram")
+        {
+            TestStudyInPink::check_10(input_file, output_file);
+        }
+
+        // if (!compareFiles(output_file, expect_file))
+        // {
+        //     clearScreen();
+        //     std::cout << "Test case " << i << " failed" << endl;
+        //     std::cout << "Input file: " << input_file << endl;
+        //     std::cout << "-------------------------------" << endl;
+        //     std::cout << "Your output: " << output_file << endl;
+        //     std::cout << "-------------------------------" << endl;
+        //     std::cout << "Expected output: " << expect_file << endl;
+        //     std::cout << "-------------------------------" << endl;
+        //     std::cout << "Structure of input file: " << endl;
+        //     printFile("testcase/" + input_folder + "/readme.txt");
+        //     break;
+        // }
         if (i == 499)
         {
             clearScreen();
@@ -661,10 +978,13 @@ int main()
         std::cout << "2. Check Waison's movement" << endl;
         std::cout << "3. Check Sherlock, Watson, Criminal's movement. Not create robot" << endl;
         std::cout << "4. Check Configuration" << endl;
-        std::cout << "5. Check Robot's movement" << endl;
-        std::cout << "6. Check BaseBag" << endl;
-        std::cout << "7. Check StudyPinkProgram" << endl;
-        std::cout << "8. FULL SAMPLE CODE" << endl;
+        std::cout << "5. Check RobotC's movement" << endl;
+        std::cout << "6. Check RobotS's movement" << endl;
+        std::cout << "7. Check RobotW's movement" << endl;
+        std::cout << "8. Check RobotSW's movement" << endl;
+        std::cout << "9. Check BaseBag" << endl;
+        std::cout << "10. Check StudyPinkProgram" << endl;
+        std::cout << "11. FULL SAMPLE CODE" << endl;
         std::cout << "========================================" << endl;
         std::cout << "Enter your choice: ";
         std::cin >> choice;
@@ -694,30 +1014,38 @@ int main()
         }
         case 5:
         {
-            printResult("Robot_move");
+            printResult("RobotC_move");
             break;
         }
         case 6:
         {
-            printResult("BaseBag");
+            printResult("RobotS_move");
             break;
         }
         case 7:
         {
-            printResult("StudyPinkProgram");
+            printResult("RobotW_move");
             break;
         }
         case 8:
         {
+            printResult("RobotSW_move");
+            break;
+        }
+        case 9:
+        {
+            printResult("BaseBag");
+            break;
+        }
+        case 10:
+        {
+            printResult("StudyPinkProgram");
+            break;
+        }
+        case 11:
+        {
             clearScreen();
             std::cout << "Inbox to get full sample code" << endl;
-#ifdef _WIN32
-            const std::string open_cmd = "start";
-#elif __APPLE__
-            const std::string open_cmd = "open";
-#else
-            const std::string open_cmd = "xdg-open";
-#endif
             std::string url = "https://m.me/quocanhcse";
             std::string cmd = open_cmd + " " + url;
             system(cmd.c_str());

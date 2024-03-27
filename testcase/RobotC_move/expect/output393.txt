@@ -1,0 +1,48 @@
+Sherlock[index=1;pos=(9,11);moving_rule=UU]
+Watson[index=2;pos=(10,1);moving_rule=UDLL]
+Criminal[index=0;pos=(11,0)]
+STEP1: * Moving objects make a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,0)];Sherlock[index=1;pos=(8,11);moving_rule=UU];Watson[index=2;pos=(10,1);moving_rule=UDLL]]
+STEP2: * Moving objects make a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(11,0)];Sherlock[index=1;pos=(7,11);moving_rule=UU];Watson[index=2;pos=(11,1);moving_rule=UDLL]]
+STEP3: * Moving objects make a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,0)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(11,0);moving_rule=UDLL]]
+STEP4: * Moving objects make a move
+ArrayMovingObject[count=3;capacity=10;Criminal[index=0;pos=(12,1)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(11,0);moving_rule=UDLL]]
+* Create new RobotC
+Robot[pos=(12,0);type=C;dist=]
+STEP5: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,0)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(10,0);moving_rule=UDLL];Robot[pos=(12,1);type=C;dist=]]
+STEP6: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,1)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(11,0);moving_rule=UDLL];Robot[pos=(12,0);type=C;dist=]]
+STEP7: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,0)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(11,0);moving_rule=UDLL];Robot[pos=(12,1);type=C;dist=]]
+STEP8: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,1)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(11,0);moving_rule=UDLL];Robot[pos=(12,0);type=C;dist=]]
+STEP9: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,0)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(10,0);moving_rule=UDLL];Robot[pos=(12,1);type=C;dist=]]
+STEP10: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,1)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(11,0);moving_rule=UDLL];Robot[pos=(12,0);type=C;dist=]]
+STEP11: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,0)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(11,0);moving_rule=UDLL];Robot[pos=(12,1);type=C;dist=]]
+STEP12: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,1)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(11,0);moving_rule=UDLL];Robot[pos=(12,0);type=C;dist=]]
+STEP13: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,0)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(10,0);moving_rule=UDLL];Robot[pos=(12,1);type=C;dist=]]
+STEP14: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,1)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(11,0);moving_rule=UDLL];Robot[pos=(12,0);type=C;dist=]]
+STEP15: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,0)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(11,0);moving_rule=UDLL];Robot[pos=(12,1);type=C;dist=]]
+STEP16: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,1)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(11,0);moving_rule=UDLL];Robot[pos=(12,0);type=C;dist=]]
+STEP17: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,0)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(10,0);moving_rule=UDLL];Robot[pos=(12,1);type=C;dist=]]
+STEP18: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,1)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(11,0);moving_rule=UDLL];Robot[pos=(12,0);type=C;dist=]]
+STEP19: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,0)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(11,0);moving_rule=UDLL];Robot[pos=(12,1);type=C;dist=]]
+STEP20: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,1)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(11,0);moving_rule=UDLL];Robot[pos=(12,0);type=C;dist=]]
+STEP21: * Moving objects make a move
+ArrayMovingObject[count=4;capacity=10;Criminal[index=0;pos=(12,0)];Sherlock[index=1;pos=(6,11);moving_rule=UU];Watson[index=2;pos=(10,0);moving_rule=UDLL];Robot[pos=(12,1);type=C;dist=]]
+End.

@@ -780,7 +780,7 @@ Position RobotW::getNextPosition()
     {
         if (map->isValid(Position(r + dr[i], c + dc[i]), this))
         {
-            distances[i] = GetDistance(Position(r + dr[i], c + dc[i]), watson->getNextPosition());
+            distances[i] = GetDistance(Position(r + dr[i], c + dc[i]), watson->getCurrentPosition());
         }
     }
 
