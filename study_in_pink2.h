@@ -96,8 +96,8 @@ public:
     static const Position npos;
 
     // Constructor
-    Position() : r(0), c(0) {}
-    Position(int in_r, int in_c) : r(in_r), c(in_c) {}
+    // Position() : r(0), c(0) {}
+    Position(int in_r = 0, int in_c = 0) : r(in_r), c(in_c) {}
     Position(const string &str_pos);
 
     // Getter & Setter
@@ -756,7 +756,7 @@ private:
 public:
     friend class TestStudyPink;
 
-    // Constructor
+    // Constructor & Destructor
     StudyPinkProgram(const string &config_file_path);
 
     bool isStop() const;

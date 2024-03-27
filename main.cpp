@@ -4,6 +4,12 @@
 
 using namespace std;
 
+#ifdef _WIN32
+const std::string path_separator = "\\";
+#else
+const std::string path_separator = "/";
+#endif
+
 // Sử dụng hàm compareFiles để so sánh 2 file
 bool compareFiles(const string &p1, const string &p2)
 {
@@ -580,7 +586,7 @@ void printResult(string input_folder)
     int end_input = 499;
     // std::cin >> end_input;
 
-    std::string command = "mkdir testcase\\" + input_folder + "\\output";
+    std::string command = "mkdir -p testcase" + path_separator + input_folder + path_separator + "output";
     system(command.c_str());
 
     for (int i = start_input; i <= end_input; ++i)
@@ -638,7 +644,7 @@ void printResult(string input_folder)
         {
             clearScreen();
             std::cout << "All test cases passed" << endl;
-            std::string command = "rmdir /S /Q testcase\\" + input_folder + "\\output";
+            std::string command = "rmdir /S /Q testcase" + path_separator + input_folder + path_separator + "output";
             system(command.c_str());
         }
     }
@@ -658,6 +664,7 @@ int main()
         std::cout << "5. Check Robot's movement" << endl;
         std::cout << "6. Check BaseBag" << endl;
         std::cout << "7. Check StudyPinkProgram" << endl;
+        std::cout << "8. FULL SAMPLE CODE" << endl;
         std::cout << "========================================" << endl;
         std::cout << "Enter your choice: ";
         std::cin >> choice;
@@ -698,6 +705,22 @@ int main()
         case 7:
         {
             printResult("StudyPinkProgram");
+            break;
+        }
+        case 8:
+        {
+            clearScreen();
+            std::cout << "Inbox to get full sample code" << endl;
+#ifdef _WIN32
+            const std::string open_cmd = "start";
+#elif __APPLE__
+            const std::string open_cmd = "open";
+#else
+            const std::string open_cmd = "xdg-open";
+#endif
+            std::string url = "https://m.me/quocanhcse";
+            std::string cmd = open_cmd + " " + url;
+            system(cmd.c_str());
             break;
         }
         }
