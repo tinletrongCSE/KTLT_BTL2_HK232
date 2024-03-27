@@ -719,7 +719,7 @@ Position RobotS::getNextPosition()
     {
         if (map->isValid(Position(r + dr[i], c + dc[i]), this))
         {
-            distances[i] = GetDistance(Position(r + dr[i], c + dc[i]), sherlock->getNextPosition());
+            distances[i] = GetDistance(Position(r + dr[i], c + dc[i]), sherlock->getCurrentPosition());
         }
     }
 

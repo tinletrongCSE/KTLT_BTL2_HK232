@@ -429,13 +429,13 @@ public:
                 outfile << robotC->str() << endl;
                 arr_moving_obj->add(robotC);
             }
-            // else if (i == 6)
-            // {
-            //     outfile << "* Create new RobotS" << endl;
-            //     robotS = new RobotS(4, temp_pos, map, criminal, sherlock);
-            //     outfile << robotS->str() << endl;
-            //     arr_moving_obj->add(robotS);
-            // }
+            else if (i == 6)
+            {
+                outfile << "* Create new RobotS" << endl;
+                robotS = new RobotS(4, temp_pos, map, criminal, sherlock);
+                outfile << robotS->str() << endl;
+                arr_moving_obj->add(robotS);
+            }
             // else if (i == 9)
             // {
             //     outfile << "* Create new RobotW" << endl;
