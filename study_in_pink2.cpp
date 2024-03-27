@@ -130,13 +130,7 @@ bool Map::isValid(const Position &pos, MovingObject *mv_obj) const
 
 /**
  * CLASS MOVINGOBJECT
- * CLASS CHARACTER
- * CLASS SHERLOCK
- * CLASS WATSON
- * CLASS CRIMINAL
- */
-
-// MOVINGOBJECT
+*/
 void MovingObject::move()
 {
     Position next_pos = getNextPosition();
@@ -150,7 +144,9 @@ void MovingObject::move()
     numsteps_now++;
 }
 
-// SHERLOCK
+/**
+ * CLASS SHERLOCK
+*/
 Position Sherlock::getNextPosition()
 {
     int row = pos.getRow();
@@ -251,7 +247,9 @@ void Sherlock::afterMove(ArrayMovingObject *arr_moving_objects, SherlockBag *she
     }
 }
 
-// WATSON
+/**
+ * CLASS WATSON
+*/
 Position Watson::getNextPosition()
 {
     int r = this->pos.getRow();
@@ -357,7 +355,9 @@ void Watson::afterMove(ArrayMovingObject *arr_moving_objects, SherlockBag *sherl
     }
 }
 
-// CRIMINAL
+/**
+ * CLASS CRIMINAL
+*/
 Position Criminal::getNextPosition()
 {
     int r = this->pos.getRow();
@@ -578,40 +578,52 @@ Configuration::~Configuration()
 
 string Configuration::str() const
 {
-    string str = "Configuration[\nMAP_NUM_ROWS=" + to_string(this->map_num_rows) + "\nMAP_NUM_COLS=" + to_string(this->map_num_cols) + "\nMAX_NUM_MOVING_OBJECTS=" + to_string(this->max_num_moving_objects) + "\nNUM_WALLS=" + to_string(this->num_walls) + "\nARRAY_WALLS=[";
+    stringstream str;
+    str << "Configuration[\nMAP_NUM_ROWS=" << map_num_rows
+        << "\nMAP_NUM_COLS=" << map_num_cols
+        << "\nMAX_NUM_MOVING_OBJECTS=" << max_num_moving_objects
+        << "\nNUM_WALLS=" << num_walls
+        << "\nARRAY_WALLS=[";
 
-    for (int i = 0; i < this->num_walls; i++)
+    for (int i = 0; i < num_walls; ++i)
     {
-        if (i == this->num_walls - 1)
+        str << arr_walls[i].str();
+        if (i != num_walls - 1)
         {
-            str += this->arr_walls[i].str();
-        }
-        else
-        {
-            str += this->arr_walls[i].str() + ";";
+            str << ";";
         }
     }
 
-    str += "]\nNUM_FAKE_WALLS=" + to_string(this->num_fake_walls) + "\nARRAY_FAKE_WALLS=[";
+    str << "]\nNUM_FAKE_WALLS=" << num_fake_walls
+        << "\nARRAY_FAKE_WALLS=[";
 
-    for (int i = 0; i < this->num_fake_walls; i++)
+    for (int i = 0; i < num_fake_walls; ++i)
     {
-        if (i == this->num_fake_walls - 1)
+        str << arr_fake_walls[i].str();
+        if (i != num_fake_walls - 1)
         {
-            str += this->arr_fake_walls[i].str();
-        }
-        else
-        {
-            str += this->arr_fake_walls[i].str() + ";";
+            str << ";";
         }
     }
 
-    str += "]\nSHERLOCK_MOVING_RULE=" + this->sherlock_moving_rule + "\nSHERLOCK_INIT_POS=" + this->sherlock_init_pos.str() + "\nSHERLOCK_INIT_HP=" + to_string(this->sherlock_init_hp) + "\nSHERLOCK_INIT_EXP=" + to_string(this->sherlock_init_exp) + "\nWATSON_MOVING_RULE=" + this->watson_moving_rule + "\nWATSON_INIT_POS=" + this->watson_init_pos.str() + "\nWATSON_INIT_HP=" + to_string(this->watson_init_hp) + "\nWATSON_INIT_EXP=" + to_string(this->watson_init_exp) + "\nCRIMINAL_INIT_POS=" + this->criminal_init_pos.str() + "\nNUM_STEPS=" + to_string(this->num_steps) + "\n]";
+    str << "]\nSHERLOCK_MOVING_RULE=" << sherlock_moving_rule
+        << "\nSHERLOCK_INIT_POS=" << sherlock_init_pos.str()
+        << "\nSHERLOCK_INIT_HP=" << sherlock_init_hp
+        << "\nSHERLOCK_INIT_EXP=" << sherlock_init_exp
+        << "\nWATSON_MOVING_RULE=" << watson_moving_rule
+        << "\nWATSON_INIT_POS=" << watson_init_pos.str()
+        << "\nWATSON_INIT_HP=" << watson_init_hp
+        << "\nWATSON_INIT_EXP=" << watson_init_exp
+        << "\nCRIMINAL_INIT_POS=" << criminal_init_pos.str()
+        << "\nNUM_STEPS=" << num_steps
+        << "\n]";
 
-    return str;
+    return str.str();
 }
 
-// 3.10 Robot - Robot
+/**
+ * CLASS ROBOT
+*/
 Robot::Robot(int index, const Position &init_pos, Map *map, RobotType robot_type, Criminal *criminal) : MovingObject(index, init_pos, map)
 {
     this->robot_type = robot_type;
@@ -683,65 +695,68 @@ Robot::Robot(int index, const Position &init_pos, Map *map, RobotType robot_type
 
 Robot::~Robot()
 {
-    delete this->item;
+    delete item;
 }
 
-// RobotS
+/**
+ * CLASS ROBOTS
+*/
 Position RobotS::getNextPosition()
 {
-    int dis_U = 999999999;
-    int dis_L = 999999999;
-    int dis_D = 999999999;
-    int dis_R = 999999999;
+    // Khởi tạo giá trị khoảng cách lớn nhất
+    const int MAX_DISTANCE = 999999999;
+    int distances[4] = {MAX_DISTANCE, MAX_DISTANCE, MAX_DISTANCE, MAX_DISTANCE};
 
-    int r = this->pos.getRow();
-    int c = this->pos.getCol();
+    // Mảng chứa các hướng di chuyển
+    int dr[4] = {-1, 0, 1, 0}; // Lên, Phải, Xuống, Trái
+    int dc[4] = {0, 1, 0, -1}; // Lên, Phải, Xuống, Trái
 
-    if (this->map->isValid(Position(r - 1, c), this))
+    int r = pos.getRow();
+    int c = pos.getCol();
+
+    // Kiểm tra và tính khoảng cách cho mỗi hướng có thể di chuyển
+    for (int i = 0; i < 4; i++)
     {
-        dis_U = GetDistance(Position(r - 1, c), this->sherlock->getNextPosition());
-    }
-    if (this->map->isValid(Position(r, c - 1), this))
-    {
-        dis_L = GetDistance(Position(r, c - 1), this->sherlock->getNextPosition());
-    }
-    if (this->map->isValid(Position(r + 1, c), this))
-    {
-        dis_D = GetDistance(Position(r + 1, c), this->sherlock->getNextPosition());
-    }
-    if (this->map->isValid(Position(r, c + 1), this))
-    {
-        dis_R = GetDistance(Position(r, c + 1), this->sherlock->getNextPosition());
+        if (map->isValid(Position(r + dr[i], c + dc[i]), this))
+        {
+            distances[i] = GetDistance(Position(r + dr[i], c + dc[i]), sherlock->getNextPosition());
+        }
     }
 
-    int min_dis = min(min(dis_U, dis_L), min(dis_D, dis_R));
+    // Tìm khoảng cách nhỏ nhất
+    int min_dis = MAX_DISTANCE;
+    for (int i = 0; i < 4; i++)
+    {
+        if (distances[i] < min_dis)
+        {
+            min_dis = distances[i];
+        }
+    }
 
-    if (min_dis == dis_U && dis_U != 999999999)
+    // Dựa vào khoảng cách nhỏ nhất để quyết định hướng di chuyển
+    for (int i = 0; i < 4; i++)
     {
-        r--;
+        if (min_dis == distances[i])
+        {
+            r += dr[i];
+            c += dc[i];
+            break;
+        }
     }
-    else if (min_dis == dis_R && dis_R != 999999999)
+
+    if (min_dis == MAX_DISTANCE)
     {
-        c++;
-    }
-    else if (min_dis == dis_D && dis_D != 999999999)
-    {
-        r++;
-    }
-    else if (min_dis == dis_L && dis_L != 999999999)
-    {
-        c--;
-    }
-    else
-    {
+        // Nếu không thể di chuyển, trả về vị trí không hợp lệ
         return Position::npos;
     }
 
-    Position next_pos = Position(r, c);
-    return next_pos;
+    // Trả về vị trí tiếp theo
+    return Position(r, c);
 }
 
-// RobotW
+/**
+ * CLASS ROBOTW
+*/
 RobotW::RobotW(int index, const Position &init_pos, Map *map, Criminal *criminal, Watson *watson) : Robot(index, init_pos, map, W, criminal)
 {
     this->watson = watson;
@@ -749,167 +764,113 @@ RobotW::RobotW(int index, const Position &init_pos, Map *map, Criminal *criminal
 
 Position RobotW::getNextPosition()
 {
-    int dis_U = 999999999;
-    int dis_L = 999999999;
-    int dis_D = 999999999;
-    int dis_R = 999999999;
+    // Khởi tạo giá trị khoảng cách lớn nhất
+    const int MAX_DISTANCE = 999999999;
+    int distances[4] = {MAX_DISTANCE, MAX_DISTANCE, MAX_DISTANCE, MAX_DISTANCE};
 
-    int r = this->pos.getRow();
-    int c = this->pos.getCol();
+    // Mảng chứa các hướng di chuyển
+    int dr[4] = {-1, 0, 1, 0}; // Lên, Phải, Xuống, Trái
+    int dc[4] = {0, 1, 0, -1}; // Lên, Phải, Xuống, Trái
 
-    if (this->map->isValid(Position(r - 1, c), this))
+    int r = pos.getRow();
+    int c = pos.getCol();
+
+    // Kiểm tra và tính khoảng cách cho mỗi hướng có thể di chuyển
+    for (int i = 0; i < 4; i++)
     {
-        dis_U = GetDistance(Position(r - 1, c), this->watson->getNextPosition());
-    }
-    if (this->map->isValid(Position(r, c - 1), this))
-    {
-        dis_L = GetDistance(Position(r, c - 1), this->watson->getNextPosition());
-    }
-    if (this->map->isValid(Position(r + 1, c), this))
-    {
-        dis_D = GetDistance(Position(r + 1, c), this->watson->getNextPosition());
-    }
-    if (this->map->isValid(Position(r, c + 1), this))
-    {
-        dis_R = GetDistance(Position(r, c + 1), this->watson->getNextPosition());
+        if (map->isValid(Position(r + dr[i], c + dc[i]), this))
+        {
+            distances[i] = GetDistance(Position(r + dr[i], c + dc[i]), watson->getNextPosition());
+        }
     }
 
-    int min_dis = min(min(dis_U, dis_L), min(dis_D, dis_R));
+    // Tìm khoảng cách nhỏ nhất
+    int min_dis = MAX_DISTANCE;
+    for (int i = 0; i < 4; i++)
+    {
+        if (distances[i] < min_dis)
+        {
+            min_dis = distances[i];
+        }
+    }
 
-    if (min_dis == dis_U && dis_U != 999999999)
+    // Dựa vào khoảng cách nhỏ nhất để quyết định hướng di chuyển
+    for (int i = 0; i < 4; i++)
     {
-        r--;
+        if (min_dis == distances[i])
+        {
+            r += dr[i];
+            c += dc[i];
+            break;
+        }
     }
-    else if (min_dis == dis_R && dis_R != 999999999)
+
+    if (min_dis == MAX_DISTANCE)
     {
-        c++;
-    }
-    else if (min_dis == dis_D && dis_D != 999999999)
-    {
-        r++;
-    }
-    else if (min_dis == dis_L && dis_L != 999999999)
-    {
-        c--;
-    }
-    else
-    {
+        // Nếu không thể di chuyển, trả về vị trí không hợp lệ
         return Position::npos;
     }
 
-    Position next_pos = Position(r, c);
-    return next_pos;
+    // Trả về vị trí tiếp theo
+    return Position(r, c);
 }
 
-// RobotSW
+/**
+ * CLASS ROBOTSW
+*/
 Position RobotSW::getNextPosition()
 {
-    int dis_UU = 999999999;
-    int dis_UR = 999999999;
-    int dis_RR = 999999999;
-    int dis_RD = 999999999;
-    int dis_DD = 999999999;
-    int dis_DL = 999999999;
-    int dis_LL = 999999999;
-    int dis_LU = 999999999;
+    // Khởi tạo giá trị khoảng cách lớn nhất
+    const int MAX_DISTANCE = 999999999;
+    int distances[8] = {MAX_DISTANCE, MAX_DISTANCE, MAX_DISTANCE, MAX_DISTANCE, MAX_DISTANCE, MAX_DISTANCE, MAX_DISTANCE, MAX_DISTANCE};
 
-    int r = this->pos.getRow();
-    int c = this->pos.getCol();
+    // Mảng chứa các hướng di chuyển
+    int dr[8] = {-2, -1, 0, 1, 2, 1, 0, -1}; // Lên 2, Lên phải, Phải 2, Xuống phải, Xuống 2, Xuống trái, Trái 2, Lên trái
+    int dc[8] = {0, 1, 2, 1, 0, -1, -2, -1}; // Lên 2, Lên phải, Phải 2, Xuống phải, Xuống 2, Xuống trái, Trái 2, Lên trái
 
-    if (this->map->isValid(Position(r - 2, c), this))
+    int r = pos.getRow();
+    int c = pos.getCol();
+
+    // Kiểm tra và tính khoảng cách cho mỗi hướng có thể di chuyển
+    for (int i = 0; i < 8; i++)
     {
-        int dis_sherlock = GetDistance(Position(r - 2, c), this->sherlock->getNextPosition());
-        int dis_watson = GetDistance(Position(r - 2, c), this->watson->getNextPosition());
-        dis_UU = dis_sherlock + dis_watson;
-    }
-    if (this->map->isValid(Position(r - 1, c + 1), this))
-    {
-        int dis_sherlock = GetDistance(Position(r - 1, c + 1), this->sherlock->getNextPosition());
-        int dis_watson = GetDistance(Position(r - 1, c + 1), this->watson->getNextPosition());
-        dis_UR = dis_sherlock + dis_watson;
-    }
-    if (this->map->isValid(Position(r, c + 2), this))
-    {
-        int dis_sherlock = GetDistance(Position(r, c + 2), this->sherlock->getNextPosition());
-        int dis_watson = GetDistance(Position(r, c + 2), this->watson->getNextPosition());
-        dis_RR = dis_sherlock + dis_watson;
-    }
-    if (this->map->isValid(Position(r + 1, c + 1), this))
-    {
-        int dis_sherlock = GetDistance(Position(r + 1, c + 1), this->sherlock->getNextPosition());
-        int dis_watson = GetDistance(Position(r + 1, c + 1), this->watson->getNextPosition());
-        dis_RD = dis_sherlock + dis_watson;
-    }
-    if (this->map->isValid(Position(r + 2, c), this))
-    {
-        int dis_sherlock = GetDistance(Position(r + 2, c), this->sherlock->getNextPosition());
-        int dis_watson = GetDistance(Position(r + 2, c), this->watson->getNextPosition());
-        dis_DD = dis_sherlock + dis_watson;
-    }
-    if (this->map->isValid(Position(r + 1, c - 1), this))
-    {
-        int dis_sherlock = GetDistance(Position(r + 1, c - 1), this->sherlock->getNextPosition());
-        int dis_watson = GetDistance(Position(r + 1, c - 1), this->watson->getNextPosition());
-        dis_DL = dis_sherlock + dis_watson;
-    }
-    if (this->map->isValid(Position(r, c - 2), this))
-    {
-        int dis_sherlock = GetDistance(Position(r, c - 2), this->sherlock->getNextPosition());
-        int dis_watson = GetDistance(Position(r, c - 2), this->watson->getNextPosition());
-        dis_LL = dis_sherlock + dis_watson;
-    }
-    if (this->map->isValid(Position(r - 1, c - 1), this))
-    {
-        int dis_sherlock = GetDistance(Position(r - 1, c - 1), this->sherlock->getNextPosition());
-        int dis_watson = GetDistance(Position(r - 1, c - 1), this->watson->getNextPosition());
-        dis_LU = dis_sherlock + dis_watson;
+        if (map->isValid(Position(r + dr[i], c + dc[i]), this))
+        {
+            int dis_sherlock = GetDistance(Position(r + dr[i], c + dc[i]), sherlock->getNextPosition());
+            int dis_watson = GetDistance(Position(r + dr[i], c + dc[i]), watson->getNextPosition());
+            distances[i] = dis_sherlock + dis_watson;
+        }
     }
 
-    int min_dis = min(min(min(dis_UU, dis_UR), min(dis_RR, dis_RD)), min(min(dis_DD, dis_DL), min(dis_LL, dis_LU)));
+    // Tìm khoảng cách nhỏ nhất
+    int min_dis = MAX_DISTANCE;
+    for (int i = 0; i < 8; i++)
+    {
+        if (distances[i] < min_dis)
+        {
+            min_dis = distances[i];
+        }
+    }
 
-    if (min_dis == dis_UU && dis_UU != 999999999)
+    // Dựa vào khoảng cách nhỏ nhất để quyết định hướng di chuyển
+    for (int i = 0; i < 8; i++)
     {
-        r -= 2;
+        if (min_dis == distances[i])
+        {
+            r += dr[i];
+            c += dc[i];
+            break;
+        }
     }
-    else if (min_dis == dis_UR && dis_UR != 999999999)
+
+    if (min_dis == MAX_DISTANCE)
     {
-        r--;
-        c++;
-    }
-    else if (min_dis == dis_RR && dis_RR != 999999999)
-    {
-        c += 2;
-    }
-    else if (min_dis == dis_RD && dis_RD != 999999999)
-    {
-        r++;
-        c++;
-    }
-    else if (min_dis == dis_DD && dis_DD != 999999999)
-    {
-        r += 2;
-    }
-    else if (min_dis == dis_DL && dis_DL != 999999999)
-    {
-        r++;
-        c--;
-    }
-    else if (min_dis == dis_LL && dis_LL != 999999999)
-    {
-        c -= 2;
-    }
-    else if (min_dis == dis_LU && dis_LU != 999999999)
-    {
-        r--;
-        c--;
-    }
-    else
-    {
+        // Nếu không thể di chuyển, trả về vị trí không hợp lệ
         return Position::npos;
     }
 
-    Position next_pos = Position(r, c);
-    return next_pos;
+    // Trả về vị trí tiếp theo
+    return Position(r, c);
 }
 
 int RobotSW::getDistance() const
@@ -920,182 +881,142 @@ int RobotSW::getDistance() const
     return dis;
 }
 
-// 3.11 Vật phẩm - BaseItem
-
-// MagicBook
+/**
+ * CLASS MAGICBOOK
+*/
 bool MagicBook::canUse(Character *character, Robot *robot)
 {
-    if (character->getName() == "Sherlock")
+    // Kiểm tra xem nhân vật có phải là Sherlock và kinh nghiệm của Sherlock có nhỏ hơn hoặc bằng 350 không
+    if (character->getName() == "Sherlock" && dynamic_cast<Sherlock *>(character)->getExp() <= 350)
     {
-        Sherlock *sherlock = dynamic_cast<Sherlock *>(character);
-        if (sherlock && sherlock->getExp() <= 350)
-        {
-            return true;
-        }
+        return true;
     }
     return false;
 }
 
 void MagicBook::use(Character *character, Robot *robot)
 {
+    // Nếu có thể sử dụng sách ma thuật
     if (this->canUse(character, robot))
     {
         Sherlock *sherlock = dynamic_cast<Sherlock *>(character);
-        sherlock->setExp(ceil(1.25 * sherlock->getExp() - 0.0001));
-        if (sherlock->getExp() > 500)
-        {
-            sherlock->setExp(500);
-        }
+
+        // Tăng kinh nghiệm của Sherlock lên 1.25 lần, nhưng không quá 500
+        sherlock->setExp(min(ceil(1.25 * sherlock->getExp() - 0.0001), 500.0));
     }
 }
 
-// EnergyDrink
+/**
+ * CLASS ENERGYDRINK
+*/
 bool EnergyDrink::canUse(Character *character, Robot *robot)
 {
-    if (character->getName() == "Watson")
+    // Kiểm tra xem nhân vật có phải là Watson hoặc Sherlock và HP của họ có nhỏ hơn hoặc bằng 100 không
+    if ((character->getName() == "Watson" && dynamic_cast<Watson *>(character)->getHp() <= 100) ||
+        (character->getName() == "Sherlock" && dynamic_cast<Sherlock *>(character)->getHp() <= 100))
     {
-        Watson *watson = dynamic_cast<Watson *>(character);
-        if (watson && watson->getHp() <= 100)
-        {
-            return true;
-        }
-    }
-    else if (character->getName() == "Sherlock")
-    {
-        Sherlock *sherlock = dynamic_cast<Sherlock *>(character);
-        if (sherlock && sherlock->getHp() <= 100)
-        {
-            return true;
-        }
+        return true;
     }
     return false;
 }
 
 void EnergyDrink::use(Character *character, Robot *robot)
 {
+    // Nếu có thể sử dụng nước tăng lực
     if (this->canUse(character, robot))
     {
+        // Tăng HP của nhân vật lên 1.1 lần, nhưng không quá 900
         if (character->getName() == "Watson")
         {
             Watson *watson = dynamic_cast<Watson *>(character);
-            watson->setHp(ceil(1.1 * watson->getHp() - 0.0001));
-            if (watson->getHp() > 900)
-            {
-                watson->setHp(900);
-            }
+            watson->setHp(min(ceil(1.1 * watson->getHp() - 0.0001), 900.0));
         }
         else if (character->getName() == "Sherlock")
         {
             Sherlock *sherlock = dynamic_cast<Sherlock *>(character);
-            sherlock->setHp(ceil(1.1 * sherlock->getHp() - 0.0001));
-            if (sherlock->getHp() > 900)
-            {
-                sherlock->setHp(900);
-            }
+            sherlock->setHp(min(ceil(1.1 * sherlock->getHp() - 0.0001), 900.0));
         }
     }
 }
 
-// FirstAid
+/**
+ * CLASS FIRSTAID
+*/
 bool FirstAid::canUse(Character *character, Robot *robot)
 {
-    if (character->getName() == "Watson")
+    // Kiểm tra xem nhân vật có phải là Watson hoặc Sherlock và HP hoặc kinh nghiệm của họ có nhỏ hơn hoặc bằng 100 hoặc 350 không
+    if ((character->getName() == "Watson" && (dynamic_cast<Watson *>(character)->getHp() <= 100 || dynamic_cast<Watson *>(character)->getExp() <= 350)) ||
+        (character->getName() == "Sherlock" && (dynamic_cast<Sherlock *>(character)->getHp() <= 100 || dynamic_cast<Sherlock *>(character)->getExp() <= 350)))
     {
-        Watson *watson = dynamic_cast<Watson *>(character);
-        if (watson && (watson->getHp() <= 100 || watson->getExp() <= 350))
-        {
-            return true;
-        }
-    }
-    else if (character->getName() == "Sherlock")
-    {
-        Sherlock *sherlock = dynamic_cast<Sherlock *>(character);
-        if (sherlock && (sherlock->getHp() <= 100 || sherlock->getExp() <= 350))
-        {
-            return true;
-        }
+        return true;
     }
     return false;
 }
 
 void FirstAid::use(Character *character, Robot *robot)
 {
+    // Nếu có thể sử dụng bộ cấp cứu
     if (this->canUse(character, robot))
     {
+        // Tăng HP và kinh nghiệm của nhân vật lên 1.5 và 1.25 lần tương ứng, nhưng không quá 900 và 500
         if (character->getName() == "Watson")
         {
             Watson *watson = dynamic_cast<Watson *>(character);
-            watson->setHp(ceil(1.5 * watson->getHp() - 0.0001));
-            if (watson->getHp() > 900)
-            {
-                watson->setHp(900);
-            }
-            watson->setExp(ceil(1.25 * watson->getExp() - 0.0001));
-            if (watson->getExp() > 500)
-            {
-                watson->setExp(500);
-            }
+            watson->setHp(min(ceil(1.5 * watson->getHp() - 0.0001), 900.0));
+            watson->setExp(min(ceil(1.25 * watson->getExp() - 0.0001), 500.0));
         }
         else if (character->getName() == "Sherlock")
         {
             Sherlock *sherlock = dynamic_cast<Sherlock *>(character);
-            sherlock->setHp(ceil(1.5 * sherlock->getHp() - 0.0001));
-            if (sherlock->getHp() > 900)
-            {
-                sherlock->setHp(900);
-            }
-            sherlock->setExp(ceil(1.25 * sherlock->getExp() - 0.0001));
-            if (sherlock->getExp() > 500)
-            {
-                sherlock->setExp(500);
-            }
+            sherlock->setHp(min(ceil(1.5 * sherlock->getHp() - 0.0001), 900.0));
+            sherlock->setExp(min(ceil(1.25 * sherlock->getExp() - 0.0001), 500.0));
         }
     }
 }
 
-// ExcemptionCard
+/**
+ * CLASS EXCEMPTIONCARD
+*/
 bool ExcemptionCard::canUse(Character *character, Robot *robot)
 {
-    if (character->getName() == "Sherlock" && robot != nullptr)
+    // Kiểm tra xem nhân vật có phải là Sherlock, có robot và HP của Sherlock có là số lẻ không
+    if (character->getName() == "Sherlock" && robot != nullptr && dynamic_cast<Sherlock *>(character)->getHp() % 2 == 1)
     {
-        Sherlock *sherlock = dynamic_cast<Sherlock *>(character);
-        if (sherlock && sherlock->getHp() % 2 == 1)
-        {
-            return true;
-        }
+        return true;
     }
     return false;
 }
 
 void ExcemptionCard::use(Character *character, Robot *robot)
 {
-    // Your code here
+    // Hàm này chưa được định nghĩa
 }
 
-// PassingCard
+/**
+ * CLASS PASSINGCARD
+*/
 bool PassingCard::canUse(Character *character, Robot *robot)
 {
-    if (character->getName() == "Watson" && robot != nullptr)
+    // Kiểm tra xem nhân vật có phải là Watson, có robot và HP của Watson có là số chẵn không
+    if (character->getName() == "Watson" && robot != nullptr && dynamic_cast<Watson *>(character)->getHp() % 2 == 0)
     {
-        Watson *watson = dynamic_cast<Watson *>(character);
-        if (watson && watson->getHp() % 2 == 0)
-        {
-            return true;
-        }
+        return true;
     }
     return false;
 }
 
 void PassingCard::use(Character *character, Robot *robot)
 {
+    // Nếu có thể sử dụng thẻ PassingCard
     if (this->canUse(character, robot))
     {
-        bool condition1 = this->challenge == "RobotC" && robot->getRobotType() != C;
-        bool condition2 = this->challenge == "RobotS" && robot->getRobotType() != S;
-        bool condition3 = this->challenge == "RobotW" && robot->getRobotType() != W;
-        bool condition4 = this->challenge == "RobotSW" && robot->getRobotType() != SW;
-        bool condition = condition1 || condition2 || condition3 || condition4;
+        // Kiểm tra xem loại robot có khớp với thử thách không
+        bool condition = (this->challenge == "RobotC" && robot->getRobotType() != C) ||
+                         (this->challenge == "RobotS" && robot->getRobotType() != S) ||
+                         (this->challenge == "RobotW" && robot->getRobotType() != W) ||
+                         (this->challenge == "RobotSW" && robot->getRobotType() != SW);
 
+        // Nếu không khớp, giảm HP của Watson 50 điểm, nhưng không nhỏ hơn 0
         if (condition)
         {
             Watson *watson = dynamic_cast<Watson *>(character);
@@ -1108,7 +1029,9 @@ void PassingCard::use(Character *character, Robot *robot)
     }
 }
 
-// 3.12 Túi đồ - BaseBag
+/**
+ * CLASS BASEBAG
+*/
 bool BaseBag::insert(BaseItem *item)
 {
     if (this->count < this->capacity)
@@ -1277,6 +1200,9 @@ BaseBag::~BaseBag()
     }
 }
 
+/**
+ * CLASS SHERLOCKBAG
+*/
 SherlockBag::SherlockBag(Sherlock *sherlock)
 {
     this->obj = sherlock;
@@ -1285,6 +1211,9 @@ SherlockBag::SherlockBag(Sherlock *sherlock)
     this->capacity = 13;
 }
 
+/**
+ * CLASS WATSONBAG
+*/
 WatsonBag::WatsonBag(Watson *watson)
 {
     this->obj = watson;
@@ -1293,7 +1222,9 @@ WatsonBag::WatsonBag(Watson *watson)
     this->capacity = 15;
 }
 
-// 3.14 StudyInPink - StudyInPink
+/**
+ * CLASS STUDYPINKPROGRAM
+ */
 StudyPinkProgram::StudyPinkProgram(const string &config_file_path)
 {
     this->config = new Configuration(config_file_path);
@@ -1304,8 +1235,6 @@ StudyPinkProgram::StudyPinkProgram(const string &config_file_path)
     this->arr_mv_objs = new ArrayMovingObject(config->getMaxNumMovingObjects());
     this->sherlock_bag = new SherlockBag(sherlock);
     this->watson_bag = new WatsonBag(watson);
-
-    // cout << this->config->str() << endl;
 
     this->arr_mv_objs->add(sherlock);
     this->arr_mv_objs->add(watson);
@@ -1343,6 +1272,7 @@ bool StudyPinkProgram::isStop() const
         {
             if ((robotC->getCurrentPosition().isEqual(sherlock->getCurrentPosition()) && sherlock->getExp() > 500))
             {
+                sherlock->setPos(criminal->getCurrentPosition());
                 return true;
             }
         }
@@ -1390,7 +1320,6 @@ void StudyPinkProgram::run(bool verbose)
             if (verbose)
             {
                 printStep(istep);
-                // cout << "STEP" << istep << ":" << arr_mv_objs->str() << endl;
             }
 
             Sherlock *sherlock = dynamic_cast<Sherlock *>(arr_mv_objs->get(i));
@@ -1409,11 +1338,6 @@ void StudyPinkProgram::run(bool verbose)
                 criminal->createRobot(arr_mv_objs);
             }
         }
-        // if (verbose)
-        // {
-        //     // printStep(istep);
-        //     cout << "STEP" << istep << ":" << arr_mv_objs->str() << endl;
-        // }
     }
     printResult();
 }

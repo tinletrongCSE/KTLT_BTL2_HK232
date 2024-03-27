@@ -286,6 +286,6 @@ Step: 0049--Sherlock[index=1;pos=(16,0);moving_rule=DLDUDDUL]--|--Watson[index=2
 Step: 0050--Sherlock[index=1;pos=(16,0);moving_rule=DLDUDDUL]--|--Watson[index=2;pos=(7,28);moving_rule=UD]--|--Criminal[index=0;pos=(17,1)]
 Step: 0050--Sherlock[index=1;pos=(17,0);moving_rule=DLDUDDUL]--|--Watson[index=2;pos=(7,28);moving_rule=UD]--|--Criminal[index=0;pos=(17,1)]
 Step: 0050--Sherlock[index=1;pos=(17,0);moving_rule=DLDUDDUL]--|--Watson[index=2;pos=(6,28);moving_rule=UD]--|--Criminal[index=0;pos=(17,1)]
-Step: 0050--Sherlock[index=1;pos=(17,0);moving_rule=DLDUDDUL]--|--Watson[index=2;pos=(6,28);moving_rule=UD]--|--Criminal[index=0;pos=(17,1)]
-The criminal escaped
+Step: 0050--Sherlock[index=1;pos=(17,1);moving_rule=DLDUDDUL]--|--Watson[index=2;pos=(6,28);moving_rule=UD]--|--Criminal[index=0;pos=(17,1)]
+Sherlock caught the criminal
 End.

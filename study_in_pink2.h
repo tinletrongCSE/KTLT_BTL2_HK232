@@ -95,21 +95,24 @@ public:
     friend class TestStudyPink;
     static const Position npos;
 
+    // Constructor
     Position() : r(0), c(0) {}
     Position(int in_r, int in_c) : r(in_r), c(in_c) {}
     Position(const string &str_pos);
 
+    // Getter & Setter
     int getRow() const { return r; }
     int getCol() const { return c; }
-
     void setRow(int r) { this->r = r; }
     void setCol(int c) { this->c = c; }
 
+    // Tạo chuỗi string Position
     string str() const
     {
         return "(" + to_string(r) + "," + to_string(c) + ")";
     }
 
+    // So sánh vị trí
     bool isEqual(int in_r, int in_c) const
     {
         return (r == in_r) && (c == in_c);
@@ -135,8 +138,11 @@ protected:
 public:
     friend class TestStudyPink;
 
+    // Constructor & Destructor
     MapElement(ElementType in_type) : type(in_type) {}
     virtual ~MapElement() {}
+
+    // Kiểm tra loại phần tử
     virtual ElementType getType() const { return type; }
 };
 
@@ -169,6 +175,7 @@ public:
 
     FakeWall(int in_req_exp) : MapElement(FAKE_WALL), req_exp(in_req_exp) {}
 
+    // Lấy số exp cần để vượt qua
     int getReqExp() const { return req_exp; }
 };
 
@@ -184,9 +191,11 @@ private:
 public:
     friend class TestStudyPink;
 
+    // Constructor & Destructor
     Map(int in_num_rows, int in_num_cols, int in_num_walls, Position *in_array_walls, int in_num_fake_walls, Position *in_array_fake_walls);
     ~Map();
 
+    // Kiểm tra vị trí có hợp lệ với MovingObject không
     bool isValid(const Position &pos, MovingObject *mv_obj) const;
 };
 
@@ -211,16 +220,22 @@ protected:
 public:
     friend class TestStudyPink;
 
+    // Constructor & Destructor
     MovingObject(int index, const Position pos, Map *map, const string &name = "")
         : index(index), pos(pos), map(map), name(name){};
     virtual ~MovingObject() {}
 
+    // Getter
     int getIndex() const { return index; }
     Map *getMap() const { return map; }
     string getName() const { return name; }
     virtual Position getNextPosition() = 0;
     Position getCurrentPosition() const { return pos; }
+
+    // Di chuyển
     virtual void move();
+
+    // Tạo chuỗi string MovingObject
     virtual string str() const = 0;
 };
 
@@ -230,6 +245,7 @@ class Character : public MovingObject
 public:
     friend class TestStudyPink;
 
+    // Constructor
     Character(int index, const Position pos, Map *map, const string &name = "")
         : MovingObject(index, pos, map, name) {}
 };
@@ -245,20 +261,27 @@ private:
 public:
     friend class TestStudyPink;
 
+    // Constructor
     Sherlock(int index, const string &moving_rule, const Position &init_pos, Map *map, int init_hp, int init_exp)
         : Character(index, init_pos, map, "Sherlock"), moving_rule(moving_rule), hp(init_hp), exp(init_exp) {}
 
+    // Getter & Setter
     int getHp() const { return hp; }
     int getExp() const { return exp; }
     void setHp(int hp) { this->hp = hp; }
     void setExp(int exp) { this->exp = exp; }
+    void setPos(Position pos) { this->pos = pos; }
 
+    // Lấy vị trí tiếp theo
     Position getNextPosition() override;
+
+    // Tạo chuỗi string Sherlock
     string str() const override
     {
         return "Sherlock[index=" + to_string(index) + ";pos=" + pos.str() + ";moving_rule=" + moving_rule + "]";
     }
 
+    // Hành động sau khi di chuyển
     void afterMove(ArrayMovingObject *arr_moving_objects, SherlockBag *sherlock_bag, WatsonBag *watson_bag);
 };
 
@@ -273,20 +296,26 @@ private:
 public:
     friend class TestStudyPink;
 
+    // Constructor
     Watson(int index, const string &moving_rule, const Position &init_pos, Map *map, int init_hp, int init_exp)
         : Character(index, init_pos, map, "Watson"), moving_rule(moving_rule), hp(init_hp), exp(init_exp) {}
 
+    // Getter & Setter
     int getHp() const { return hp; }
     int getExp() const { return exp; }
     void setHp(int hp) { this->hp = hp; }
     void setExp(int exp) { this->exp = exp; }
 
+    // Lấy vị trí tiếp theo
     Position getNextPosition() override;
+
+    // Tạo chuỗi string Watson
     string str() const override
     {
         return "Watson[index=" + to_string(index) + ";pos=" + pos.str() + ";moving_rule=" + moving_rule + "]";
     }
 
+    // Hành động sau khi di chuyển
     void afterMove(ArrayMovingObject *arr_moving_objects, SherlockBag *sherlock_bag, WatsonBag *watson_bag);
 };
 
@@ -302,16 +331,26 @@ private:
 public:
     friend class TestStudyPink;
 
+    // Constructor
     Criminal(int index, const Position &init_pos, Map *map, Sherlock *sherlock, Watson *watson)
         : Character(index, init_pos, map, "Criminal"), sherlock(sherlock), watson(watson), num_steps(0) {}
 
+    // Lấy vị trí tiếp theo
     Position getNextPosition() override;
+
+    // Tạo robot
     void createRobot(ArrayMovingObject *arr_moving_objects);
+
+    // Di chuyển
     void move() override;
+
+    // Tạo chuỗi string Criminal
     string str() const override
     {
         return "Criminal[index=" + to_string(index) + ";pos=" + pos.str() + "]";
     }
+
+    // Lấy vị trí liền trước đó
     Position getPrevPosition() const { return prev_pos; }
 };
 
@@ -328,6 +367,7 @@ public:
 public:
     friend class TestStudyPink;
 
+    // Constructor & Destructor
     ArrayMovingObject(int capacity)
         : capacity(capacity), count(0), arr_mv_objs(new MovingObject *[capacity]()){};
 
@@ -336,10 +376,19 @@ public:
         delete[] arr_mv_objs;
     }
 
+    // Kiểm tra mảng đầy
     bool isFull() const { return (count >= capacity); }
+
+    // Thêm MovingObject vào mảng
     bool add(MovingObject *mv_obj);
+
+    // Lấy số lượng MovingObject
     int getMovingObjectCount() const { return count; }
+
+    // Lấy MovingObject theo index
     MovingObject *get(int index) const { return arr_mv_objs[index]; }
+
+    // Lấy MovingObject theo vị trí
     string str() const;
 };
 
@@ -370,10 +419,12 @@ private:
 public:
     friend class TestStudyPink;
 
+    // Constructor & Destructor
     Configuration(const string &filepath);
     ~Configuration();
     string str() const;
 
+    // Getter
     int getNumRows() const { return this->map_num_rows; }
     int getNumCols() const { return this->map_num_cols; }
     int getMaxNumMovingObjects() const { return this->max_num_moving_objects; }
@@ -413,9 +464,11 @@ public:
 
     Criminal *criminal;
 
+    // Constructor & Destructor
     Robot(int index, const Position &init_pos, Map *map, RobotType robot_type, Criminal *criminal);
     ~Robot();
 
+    // Getter
     RobotType getRobotType() const { return this->robot_type; }
     BaseItem *getItem() const { return this->item; }
 };
@@ -426,19 +479,23 @@ class RobotC : public Robot
 public:
     friend class TestStudyPink;
 
+    // Constructor
     RobotC(int index, const Position &init_pos, Map *map, Criminal *criminal)
         : Robot(index, init_pos, map, C, criminal) {}
 
+    // Lấy vị trí tiếp theo
     Position getNextPosition() override
     {
         return this->criminal->getPrevPosition();
     }
 
+    // Lấy khoảng cách
     int getDistance(Character *character) const
     {
         return GetDistance(this->pos, character->getCurrentPosition());
     }
 
+    // Tạo chuỗi string RobotC
     string str() const override
     {
         return "Robot[pos=" + this->pos.str() + ";type=C" + ";dist=]";
@@ -453,16 +510,20 @@ public:
 
     Sherlock *sherlock;
 
+    // Constructor
     RobotS(int index, const Position &init_pos, Map *map, Criminal *criminal, Sherlock *sherlock)
         : Robot(index, init_pos, map, S, criminal), sherlock(sherlock) {}
 
+    // Lấy vị trí tiếp theo
     Position getNextPosition() override;
 
+    // Lấy khoảng cách
     int getDistance() const
     {
         return GetDistance(this->pos, this->sherlock->getCurrentPosition());
     }
 
+    // Tạo chuỗi string RobotS
     string str() const override
     {
         return "Robot[pos=" + this->pos.str() + ";type=S" + ";dist=" + to_string(this->getDistance()) + "]";
@@ -477,15 +538,19 @@ public:
 
     Watson *watson;
 
+    // Constructor
     RobotW(int index, const Position &init_pos, Map *map, Criminal *criminal, Watson *watson);
 
+    // Lấy vị trí tiếp theo
     Position getNextPosition() override;
 
+    // Lấy khoảng cách
     int getDistance() const
     {
         return GetDistance(this->pos, this->watson->getCurrentPosition());
     }
 
+    // Tạo chuỗi string RobotW
     string str() const override
     {
         return "Robot[pos=" + this->pos.str() + ";type=W" + ";dist=" + to_string(this->getDistance()) + "]";
@@ -501,13 +566,17 @@ public:
     Sherlock *sherlock;
     Watson *watson;
 
+    // Constructor
     RobotSW(int index, const Position &init_pos, Map *map, Criminal *criminal, Sherlock *sherlock, Watson *watson)
         : Robot(index, init_pos, map, SW, criminal), sherlock(sherlock), watson(watson) {}
 
+    // Lấy vị trí tiếp theo
     Position getNextPosition() override;
 
+    // Lấy khoảng cách
     int getDistance() const;
 
+    // Tạo chuỗi string RobotSW
     string str() const override
     {
         return "Robot[pos=" + this->pos.str() + ";type=SW" + ";dist=" + to_string(this->getDistance()) + "]";
@@ -531,11 +600,13 @@ public:
 
     string name;
 
+    // Constructor
     BaseItem(const string &name) : name(name) {}
 
     virtual bool canUse(Character *character, Robot *robot = NULL) = 0;
     virtual void use(Character *character, Robot *robot = NULL) = 0;
 
+    // Lấy tên Item
     string getName() const { return this->name; }
 };
 
@@ -545,6 +616,7 @@ class MagicBook : public BaseItem
 public:
     friend class TestStudyPink;
 
+    // Constructor
     MagicBook() : BaseItem("MagicBook") {}
 
     bool canUse(Character *character, Robot *robot = NULL) override;
@@ -557,6 +629,7 @@ class EnergyDrink : public BaseItem
 public:
     friend class TestStudyPink;
 
+    // Constructor
     EnergyDrink() : BaseItem("EnergyDrink") {}
 
     bool canUse(Character *character, Robot *robot = NULL) override;
@@ -569,6 +642,7 @@ class FirstAid : public BaseItem
 public:
     friend class TestStudyPink;
 
+    // Constructor
     FirstAid() : BaseItem("FirstAid") {}
 
     bool canUse(Character *character, Robot *robot = NULL) override;
@@ -581,6 +655,7 @@ class ExcemptionCard : public BaseItem
 public:
     friend class TestStudyPink;
 
+    // Constructor
     ExcemptionCard() : BaseItem("ExcemptionCard") {}
 
     bool canUse(Character *character, Robot *robot = NULL) override;
@@ -595,6 +670,7 @@ public:
 
     string challenge;
 
+    // Constructor
     PassingCard(const string &challenge) : BaseItem("PassingCard"), challenge(challenge) {}
 
     bool canUse(Character *character, Robot *robot = NULL) override;
@@ -628,12 +704,17 @@ protected:
 public:
     friend class TestStudyPink;
 
+    // Constructor & Destructor
     BaseBag() {}
     ~BaseBag();
 
+    // Thêm Item vào Bag
     virtual bool insert(BaseItem *item);
+
     virtual BaseItem *get();
     virtual BaseItem *get(ItemType itemType);
+
+    // Tạo chuỗi string Bag
     virtual string str() const;
 };
 
@@ -643,6 +724,7 @@ class SherlockBag : public BaseBag
 public:
     friend class TestStudyPink;
 
+    // Constructor
     SherlockBag(Sherlock *sherlock);
 };
 
@@ -652,6 +734,7 @@ class WatsonBag : public BaseBag
 public:
     friend class TestStudyPink;
 
+    // Constructor
     WatsonBag(Watson *watson);
 };
 
@@ -673,6 +756,7 @@ private:
 public:
     friend class TestStudyPink;
 
+    // Constructor
     StudyPinkProgram(const string &config_file_path);
 
     bool isStop() const;
