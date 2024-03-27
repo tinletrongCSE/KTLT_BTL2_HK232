@@ -899,7 +899,7 @@ void printResult(string input_folder)
         clearScreen();
         std::cout << "Checking " << input_folder << " - Testcase: " << i << endl;
         string input_file = "testcase/" + input_folder + "/input/input" + to_string(i) + ".txt";
-        string output_file = "testcase/" + input_folder + "/expect/output" + to_string(i) + ".txt";
+        string output_file = "testcase/" + input_folder + "/output/output" + to_string(i) + ".txt";
         string expect_file = "testcase/" + input_folder + "/expect/output" + to_string(i) + ".txt";
 
         if (input_folder == "Sherlock_move")
@@ -943,20 +943,20 @@ void printResult(string input_folder)
             TestStudyInPink::check_10(input_file, output_file);
         }
 
-        // if (!compareFiles(output_file, expect_file))
-        // {
-        //     clearScreen();
-        //     std::cout << "Test case " << i << " failed" << endl;
-        //     std::cout << "Input file: " << input_file << endl;
-        //     std::cout << "-------------------------------" << endl;
-        //     std::cout << "Your output: " << output_file << endl;
-        //     std::cout << "-------------------------------" << endl;
-        //     std::cout << "Expected output: " << expect_file << endl;
-        //     std::cout << "-------------------------------" << endl;
-        //     std::cout << "Structure of input file: " << endl;
-        //     printFile("testcase/" + input_folder + "/readme.txt");
-        //     break;
-        // }
+        if (!compareFiles(output_file, expect_file))
+        {
+            clearScreen();
+            std::cout << "Test case " << i << " failed" << endl;
+            std::cout << "Input file: " << input_file << endl;
+            std::cout << "-------------------------------" << endl;
+            std::cout << "Your output: " << output_file << endl;
+            std::cout << "-------------------------------" << endl;
+            std::cout << "Expected output: " << expect_file << endl;
+            std::cout << "-------------------------------" << endl;
+            std::cout << "Structure of input file: " << endl;
+            printFile("testcase/" + input_folder + "/readme.txt");
+            break;
+        }
         if (i == 499)
         {
             clearScreen();
